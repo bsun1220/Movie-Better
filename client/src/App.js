@@ -1,11 +1,14 @@
-import './App.css';
+import React from "react";
+import { Route, Routes} from "react-router-dom";
+import EndPointOne from "./endpoint1";
 
-function App() {
-  return (
-    <div className="App">
-      <p>Hello</p>
-    </div>
-  );
-}
-
+const App = () => {
+    return (
+        <div>
+            <Routes>
+                <Route exact path = "/endpoint1" element = {<EndPointOne/>}/>
+            </Routes>
+        </div>
+    );
+   };
 export default App;

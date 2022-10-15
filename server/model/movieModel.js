@@ -21,6 +21,10 @@ const MovieSchema = new Schema({
         type:Number,
         required:true
     },
+    rating:{
+        type:Number,
+        required:true
+    },
     votes:{
         type:Number,
         required:true

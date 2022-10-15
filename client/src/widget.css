@@ -1,0 +1,57 @@
+.body{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction: column;
+}
+
+.body p{
+    margin:0%;
+    margin-bottom:10px
+}
+
+.body h1{
+    margin-bottom: 10px;
+}
+
+input{
+    width:fit-content;
+    display:flex;
+    flex-wrap:wrap;
+}
+
+.card{
+    margin-top:30px;
+    background-color:darkblue;
+    width:30vw;
+    display:flex;
+    border-style:solid;
+    border-color:black;
+    border-radius:3px;
+    flex-direction:column;
+}
+
+.card p{
+    margin:0px;
+    margin-inline:20px;
+    margin-bottom:5px;
+    color:white
+}
+
+.card h1{
+    margin:0px;
+    margin-inline:auto;
+    margin-top:5px;
+    color:white;
+}
+
+.card hr{
+    width:90%;
+    height:1px;
+    margin:0px;
+    margin-bottom:15px;
+    margin-inline:auto;
+    padding:0px;
+    background-color:white;
+    border:none;
+}

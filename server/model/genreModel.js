@@ -5,8 +5,7 @@ const GenreSchema = new Schema({
     tid:{
         type:String,
         maxlength:50,
-        required:true,
-        unique:true
+        required:true
     },
     genre:{
         type:String,

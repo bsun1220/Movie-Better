@@ -14,9 +14,11 @@ require("dotenv").config({ path: "./config.env" });
 app.use(cors());
 app.use(express.json());
 
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(require("./routes/movie"));
+app.use(require("./routes/genre"));
 
 mongoose.connect(uri,{
     useNewUrlParser: true,
