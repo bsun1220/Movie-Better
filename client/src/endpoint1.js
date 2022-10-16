@@ -21,10 +21,12 @@ export default function EndPointOne(){
         if (data.length === 0){
             setError("TITLE NOT FOUND");
             setTitleData("");
+            setUserInput("");
             setMovieForm("");
         }
         else{
             setError("");
+            setUserInput("");
             setTitleData(data);
         }
     }
