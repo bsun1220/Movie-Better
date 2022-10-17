@@ -14,7 +14,7 @@ export default function EndPointOne(){
         setUserInput(e.target.value);
     }
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         const body = {"title":userInput};
         const request = await axios.post(`http://localhost:5001/movie`, body);
         const data = request.data;
