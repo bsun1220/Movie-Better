@@ -14,7 +14,7 @@ export default function EndPointOne(){
         setUserInput(e.target.value);
     }
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         const body = {"title":userInput};
         const request = await axios.post(`http://localhost:5001/movie`, body);
         const data = request.data;
@@ -35,13 +35,9 @@ export default function EndPointOne(){
         if (titleData !== ""){
             const list = []
             titleData.forEach((data) => {
-                console.log(data);
-                const title = data.title;
-                const year = data.year;
-                const length = data.length;
-                const rating = data.rating;
-                const votes = data.votes;
-                const tid = data.tid;
+
+                const {title, year, length, tid, votes, rating} = data;
+
                 list.push(
                     <MovieInfoCard key = {tid} title = 
                     {title} year = {year} length = {length}
