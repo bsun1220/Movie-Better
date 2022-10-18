@@ -51,13 +51,13 @@ export default function TopMovies(){
     return(
         <div className = "body">
             <h1 style = {{"marginTop":"40px"}}>Top Movies</h1>
-            <p>Find the most famous movies that a given actor is in. Enter actor name here:</p>
+            <p>Find the most famous movies that a given actor is in. Enter name here:</p>
             <div className = "hi">
                 <form>
                     <textarea 
                         onChange = {handleChange}
                         type = {"text"}
-                        placeholder = {"enter title"}
+                        placeholder = {"enter name"}
                         style = {{"maxHeight":"150px","minHeight":"30px","lineHeight":"1", "minWidth":"30vw", "maxWidth":"30vw"}}
                         value = {userInput}/>
                 </form>
