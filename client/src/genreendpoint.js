@@ -1,5 +1,5 @@
 import './widget.css';
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useRef} from "react";
 import axios from "axios";
 import GenreInfoCard from './genreinfocard';
 
@@ -9,6 +9,7 @@ export default function GenreEndpoint(){
     const [error, setError] = useState("");
     const [titleData, setTitleData] = useState("");
     const [movieForm, setMovieForm] = useState("");
+    const [inputData, setInputData]= useState("");
 
     const handleChange = (e) =>{
         setUserInput(e.target.value);
@@ -23,11 +24,13 @@ export default function GenreEndpoint(){
             setTitleData("");
             setUserInput("");
             setMovieForm("");
+            setInputData("");
         }
         else{
             setError("");
             setUserInput("");
             setTitleData(data);
+            setInputData(userInput +"'s Genres:");
         }
     }
 
@@ -36,10 +39,10 @@ export default function GenreEndpoint(){
             const list = []
             titleData.forEach((data) => {
 
-                const {tid, title, genre} = data;
+                const {_id, title, genre} = data;
 
                 list.push(
-                    <GenreInfoCard key = {tid} title = 
+                    <GenreInfoCard key = {_id} title = 
                     {title} genre= {genre}/>
                 )
             })
@@ -63,6 +66,7 @@ export default function GenreEndpoint(){
                 <button style = {{"width":"30.5vw"}} onClick = {handleSubmit}>
                     Submit</button>
             </div>
+            <h1 style = {{"marginTop":"20px",color:"black"}}>{inputData}</h1>
             {movieForm}
             <p style = {{marginTop:"30px", color:"red"}}>{error}</p>
         </div>

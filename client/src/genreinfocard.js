@@ -4,9 +4,10 @@ import './widget.css';
 export default function GenreInfoCard(prop){
     return(
         <div className = "card">
-            <h1>{prop.title}</h1>
-            <hr/>
-            <p>Genre : {prop.genre}</p>
+            <br></br>
+            <h1>{prop.genre}</h1>
+            <br></br>
+            <br></br>
         </div>
 
     )

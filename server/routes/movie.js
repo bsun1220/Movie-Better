@@ -34,25 +34,11 @@ Router.post("/movieGenres", async(req, res) => {
     var myIds = new Array()
 
     const movieID= await Movie.find({title:titleMovie},{"tid":1})
-    // const movieTitle= await Movie.find({title:titleMovie}, {"title":1})
     console.log("new movie")
     console.log(movieID)
     const arrID = await Array.from(movieID).forEach(function(myDoc){myIds.push(myDoc.tid)})
     const newTID= myIds[0]
     const genre = await Genre.find({tid:newTID}, {genre:1, tid:1})
-//    console.log("the joined")
-
-// let query= [{
-// $lookup: 
-// {
-// from: "movies",
-// localField:"tid",
-// foreignField:"tid",
-// as : "titles"
-// }
-// }];
-    //  const grouping = await ans.aggregate(query);
-
     console.log(genre);
     console.log(myIds); 
     
