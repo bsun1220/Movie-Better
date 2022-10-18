@@ -25,4 +25,15 @@ Router.post("/movie", async(req, res) => {
     }
 });
 
+Router.post("/rating", async(req, res) => {
+    const ratingMovie = req.body.rating;
+    const rating = await Movie.find({rating:ratingMovie})
+    try{
+        res.send(rating);
+    }
+    catch(e){
+        res.status(500).send(e);
+    }
+});
+
 module.exports = Router;
