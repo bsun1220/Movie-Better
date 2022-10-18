@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import GenreInfoCard from './genreinfocard';
 
-export default function EndPointTwo(){
+export default function GenreEndpoint(){
 
     const [userInput, setUserInput] = useState("");
     const [error, setError] = useState("");
@@ -49,7 +49,7 @@ export default function EndPointTwo(){
 
     return(
         <div className = "body">
-            <h1 style = {{"marginTop":"40px"}}>Endpoint Two</h1>
+            <h1 style = {{"marginTop":"40px"}}>Genre Endpoint</h1>
             <p>Find the genres of a given movie from our database. Enter name here:</p>
             <div className = "hi">
                 <form>
