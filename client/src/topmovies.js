@@ -1,7 +1,7 @@
 import './widget.css';
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import TopInfoCard from './topinfocard';
+import MovieInfoCard from './movieinfocard';
 
 export default function TopMovies(){
 
@@ -36,12 +36,12 @@ export default function TopMovies(){
             const list = []
             titleData.forEach((data) => {
 
-                const {uid, name, birthYear, primaryProfession, deathYear} = data;
+                const {title, year, length, tid, votes, rating} = data;
 
                 list.push(
-                    <TopInfoCard uid = {uid} name = 
-                    {name} birthYear = {birthYear} deathYear = {deathYear}
-                    primaryProfession = {primaryProfession}/>
+                    <MovieInfoCard key = {tid} title = 
+                    {title} year = {year} length = {length}
+                    rating = {rating} votes = {votes}/>
                 )
             })
             setMovieForm(list);
