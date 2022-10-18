@@ -19,6 +19,9 @@ app.use(bodyParser.json());
 
 app.use(require("./routes/movie"));
 app.use(require("./routes/genre"));
+app.use(require("./routes/famous"));
+app.use(require("./routes/crew"));
+app.use(require("./routes/info"));
 
 mongoose.connect(uri,{
     useNewUrlParser: true,
