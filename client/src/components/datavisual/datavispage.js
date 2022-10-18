@@ -2,6 +2,8 @@ import React from "react";
 import "../generalstyle/general.css"
 
 export default function DataVisPage(){
+
+
     return(<div>
         <div className = {"frontpage"}>
             <div style = {{"display":"flex", "alignItems":"center"}}>
@@ -33,6 +35,9 @@ export default function DataVisPage(){
                 to find if they believe that the general consensus on this movie is incorrect or not. After they have decided fully 
                 on what the predicted value is, the user can place a bet on the separate betting platform page.
             </p>
+        </div>
+        <div>
+            <p>Hi</p>
         </div>
 
     </div>)
