@@ -5,6 +5,7 @@ import GenreEndpoint from "./genreendpoint";
 import RatingEndpoint from "./ratingendpoint";
 import HomePage from "./components/homepage/home";
 import DataVisPage from "./components/datavisual/datavispage";
+import TopMovies from "./topmovies";
 
 const App = () => {
     return (
@@ -15,6 +16,7 @@ const App = () => {
                 <Route exact path = "/rating" element = {<RatingEndpoint/>}/>
                 <Route exact path = "/" element = {<HomePage/>}/>
                 <Route exact path = "/datavis" element = {<DataVisPage/>}/>
+                <Route exact path = "/topmovies" element = {<TopMovies/>}/>
             </Routes>
         </div>
     );

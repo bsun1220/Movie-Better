@@ -18,7 +18,6 @@ Router.put("/movie", async(req, res) => {
 Router.post("/movie", async(req, res) => {
     const titleMovie = req.body.title;
     const movie = await Movie.find({title:titleMovie})
-    console.log(movie);
     try{
         res.send(movie);
     }
@@ -34,13 +33,13 @@ Router.post("/movieGenres", async(req, res) => {
     var myIds = new Array()
 
     const movieID= await Movie.find({title:titleMovie},{"tid":1})
-    console.log("new movie")
-    console.log(movieID)
+    // console.log("new movie")
+    // console.log(movieID)
     const arrID = await Array.from(movieID).forEach(function(myDoc){myIds.push(myDoc.tid)})
     const newTID= myIds[0]
     const genre = await Genre.find({tid:newTID}, {genre:1, tid:1})
-    console.log(genre);
-    console.log(myIds); 
+    // console.log(genre);
+    // console.log(myIds); 
     
     try{
         res.send(genre);
