@@ -1,0 +1,18 @@
+
+.dataentrybutton{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+}
+
+.dataentrybutton button{
+    height:50px;
+    margin-left:5px;
+    width:150px;
+}
+
+.dataentrybutton form{
+    margin-top:0px;
+    margin-bottom:0px;
+}

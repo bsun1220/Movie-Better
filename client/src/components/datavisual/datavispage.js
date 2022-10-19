@@ -1,8 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import "../generalstyle/general.css"
+import StartEntry from "./startentry";
 
 export default function DataVisPage(){
 
+    const [page, setPage] = useState("start");
+
+    const ref = {
+        "start":<StartEntry/>
+    }
 
     return(<div>
         <div className = {"frontpage"}>
@@ -26,19 +32,18 @@ export default function DataVisPage(){
             <p>
                 The steps for this tool is as follows. First, the user will select a movie in 2023 that they want to conduct analysis on. 
                 From there, the user will receive basic information from this movie, including genre, title, director, and actors. From there,
-                The user can continue to conduct future analysis. For example, the user can examine the past movies from the director in the form 
-                of time series analysis. Other features include search by actor and genre analysis. From there, the user can add more restrictions
-                within their search, allowing for more pinpoint precision. This data originates from IMDB.
+                the user can continue to conduct future analysis. For example, the user can examine the past movies from the director in the form 
+                of time series analysis. Other features include search by actor and genre analysis. The user can add more restrictions
+                within their search, allowing for more pinpoint precision, with data originating from IDMB. 
             </p>
             <p>
-                After conducting this analysis. A user can examine other trends such as the total number of bets being placed on the 2023 movie
+                After conducting this analysis, a user can examine other trends such as the total number of bets being placed on the 2023 movie
                 to find if they believe that the general consensus on this movie is incorrect or not. After they have decided fully 
                 on what the predicted value is, the user can place a bet on the separate betting platform page.
             </p>
         </div>
-        <div>
-            <p>Hi</p>
-        </div>
+        {ref[page]}
+
 
     </div>)
 }

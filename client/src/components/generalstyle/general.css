@@ -45,6 +45,7 @@ h2{
 }
 
 .aboutpage{
+    color:white;
     background-color:aliceblue;
     margin:0px;
     padding-top:7vh;
@@ -72,8 +73,67 @@ h2{
     margin:0px;
     margin-top:5px;
 }
+
 .aboutpage p{
     margin-top:20px;
+    margin-bottom:20px;
     text-align:left;
     color:gray;
+}
+
+.secondarypage{
+    padding-top:50px;
+    padding-bottom:50px;
+    background-color:#e6e8f4;
+    color:rgb(28, 24, 24);
+    min-height:50vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.secondarypage form{
+    margin-top:20px;
+}
+
+.secondarypage textarea{
+    max-width:30vw;
+    min-width:30vw;
+    max-height:50px;
+    min-height:30px;
+}
+
+.secondarypage input{
+    max-width:29.9vw;
+    min-width:29.9vw;
+    font-family: monospace;
+}
+
+input:focus{
+    outline:none;
+}
+form:focus{
+    outline:none;
+}
+
+textarea:focus{
+    outline:none;
+}
+
+button{
+    background-color:gold;
+    font-size:large;
+    font-weight:500;
+    padding:5px;
+    border:none;
+    border-radius:5px;
+    color:gray;
+    transition:0.5s;
+}
+button:hover{
+    border:none;
+    background-color:orange;
+    color:white;
+    cursor:pointer;
+    transition:0.5s;
 }
