@@ -1,9 +1,9 @@
-import './widget.css';
+import '../../widget.css';
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import MovieInfoCard from './movieinfocard';
+import MovieInfoCard from '../../movieinfocard';
 
-export default function RecentMovies(){
+export default function Director(){
 
     const [userInput, setUserInput] = useState("");
     const [error, setError] = useState("");
@@ -19,7 +19,7 @@ export default function RecentMovies(){
         const request = await axios.post(`http://localhost:5001/infoRecent`, body);
         const data = request.data;
         if (data.length === 0){
-            setError("ACTOR NOT FOUND");
+            setError("DIRECTOR NOT FOUND");
             setTitleData("");
             setUserInput("");
             setMovieForm("");
@@ -50,8 +50,8 @@ export default function RecentMovies(){
 
     return(
         <div className = "body">
-            <h1 style = {{"marginTop":"40px"}}>An Actor's Recent Movies</h1>
-            <p>Find the recent movies that a given actor has played in. Enter name here:</p>
+            <h1 style = {{"marginTop":"40px"}}>A Director's Recent Movies</h1>
+            <p>Find the recent movies that someone has directed. Enter name here:</p>
             <div className = "hi">
                 <form>
                     <textarea 

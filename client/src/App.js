@@ -6,8 +6,8 @@ import RatingEndpoint from "./ratingendpoint";
 import HomePage from "./components/homepage/home";
 import DataVisPage from "./components/datavisual/datavispage";
 import TopMovies from "./topmovies";
-import RecentMovies from "./recentmovies";
-
+import Actor from "./components/recentmovies/actor.js";
+import Director from "./components/recentmovies/director.js";
 const App = () => {
     return (
         <div>
@@ -18,7 +18,8 @@ const App = () => {
                 <Route exact path = "/" element = {<HomePage/>}/>
                 <Route exact path = "/datavis" element = {<DataVisPage/>}/>
                 <Route exact path = "/topmovies" element = {<TopMovies/>}/>
-                <Route exact path = "/recentmovies" element = {<RecentMovies/>}/>
+                <Route exact path = "/recentmovies/actor" element = {<Actor/>}/>
+                <Route exact path = "/recentmovies/director" element = {<Director/>}/>
             </Routes>
         </div>
     );
