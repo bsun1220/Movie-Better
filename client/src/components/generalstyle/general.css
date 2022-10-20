@@ -83,7 +83,6 @@ h2{
 
 .secondarypage{
     padding-top:50px;
-    padding-bottom:50px;
     background-color:#e6e8f4;
     color:rgb(28, 24, 24);
     min-height:50vh;
@@ -134,6 +133,20 @@ button:hover{
     border:none;
     background-color:orange;
     color:white;
+    cursor:pointer;
+    transition:0.5s;
+}
+
+.secondarybutton{
+    background-color:rgb(40, 134, 196);
+    color:white;
+    width:max(10vw, 100px);
+}
+
+.secondarybutton:hover{
+    border:none;
+    background-color:white;
+    color:rgb(40, 134, 196);
     cursor:pointer;
     transition:0.5s;
 }

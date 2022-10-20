@@ -27,8 +27,8 @@ export default function StartEntry(){
         }
         const adj = titleData.actors.replaceAll(',', ', ');
         const adj1 = titleData.directors.replaceAll(',', ', ');
-        let element = <MovieDesc 
-            nmin = {titleData.nmid}
+        const element = <MovieDesc 
+            key = {titleData.nmid}
             title = {titleData.title}
             genre = {titleData.genre}
             des = {titleData.desc}
