@@ -15,8 +15,8 @@ export default function EndPointTwo() {
 
 
     const handleClick = async(e) => {
-        const body = {"title":e.target.id};
-        const request = await axios.post(`http://localhost:5001/genre`, body);
+        const body = {"genre":e.target.id};
+        const request = await axios.post(`http://localhost:5001/mygenre`, body);
         const data = request.data;
         if (data.length === 0){
             setError("TITLE NOT FOUND");
@@ -25,7 +25,7 @@ export default function EndPointTwo() {
         }
         else{
             setError("");
-            setTitleData(data[0]);
+            setTitleData(data);
         }
     }
 
