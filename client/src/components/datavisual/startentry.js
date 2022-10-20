@@ -48,6 +48,7 @@ export default function StartEntry(){
 
         if (titleIsEmpty && idIsEmpty){
             setError("No Input Detected");
+            setDesc("");
             return;
         }
         else if (!idIsEmpty){
@@ -64,6 +65,7 @@ export default function StartEntry(){
 
         if (getData.length === 0){
             setError("Title Not Found");
+            setDesc("");
         }
         else{
             setError("");
