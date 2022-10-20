@@ -4,7 +4,7 @@ import axios from "axios";
 import MovieInfoCard from './movieinfocard';
 
 
-export default function EndPointTwo() {
+export default function EndPointEsha() {
 
 
     const [userInput, setUserInput] = useState("");
@@ -54,7 +54,7 @@ export default function EndPointTwo() {
 
     return (
         <div className = "body">
-            <h1 style = {{"marginTop":"40px"}}>Endpoint Two</h1>
+            <h1 style = {{"marginTop":"40px"}}>EndpointEsha</h1>
             <div className = "button">
                 <button id= {"Action"}
                 style = {{"width":"30.5vw", "maxHeight":"150px","minHeight":"30px","lineHeight":"1", "minWidth":"30vw", "maxWidth":"30vw"}} onClick={(e) => handleClick(e)}>
