@@ -1,0 +1,139 @@
+p{
+    font-family:Arial;
+    text-align:center;
+    margin:0px;
+}
+
+h1{
+    font-family:Arial;
+    text-align:center;
+    margin:0px;
+}
+
+h2{
+    font-family:Arial;
+    text-align:center;
+    margin:0px;
+}
+
+.page{
+    background-color:aliceblue;
+    width:100%;
+    min-height:100vh;
+}
+
+.frontpage{
+    background-color:rgb(40, 134, 196);
+    color:white;
+    min-height:80vh;
+    margin:0px;
+    padding:0px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+.frontpage h1{
+    font-size:75px;
+    font-weight:500;
+}
+
+.frontpage p{
+    font-size:25px;
+    font-weight:100;
+}
+
+.aboutpage{
+    color:white;
+    background-color:aliceblue;
+    margin:0px;
+    padding-top:7vh;
+    padding-inline:15vw;
+    min-height:50vh;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-items: flex-start;
+
+}
+
+.aboutpage h1{
+    text-align:left;
+    font-stretch: narrower;
+    color:rgb(28, 24, 24);
+    margin-left:0px;
+}
+
+.aboutpage hr{
+    height:2px;
+    background-color:gray;
+    width:30%;
+    border:none;
+    margin:0px;
+    margin-top:5px;
+}
+
+.aboutpage p{
+    margin-top:20px;
+    margin-bottom:20px;
+    text-align:left;
+    color:gray;
+}
+
+.secondarypage{
+    padding-top:50px;
+    padding-bottom:50px;
+    background-color:#e6e8f4;
+    color:rgb(28, 24, 24);
+    min-height:50vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.secondarypage form{
+    margin-top:20px;
+}
+
+.secondarypage textarea{
+    max-width:30vw;
+    min-width:30vw;
+    max-height:50px;
+    min-height:30px;
+}
+
+.secondarypage input{
+    max-width:29.9vw;
+    min-width:29.9vw;
+    font-family: monospace;
+}
+
+input:focus{
+    outline:none;
+}
+form:focus{
+    outline:none;
+}
+
+textarea:focus{
+    outline:none;
+}
+
+button{
+    background-color:gold;
+    font-size:large;
+    font-weight:500;
+    padding:5px;
+    border:none;
+    border-radius:5px;
+    color:gray;
+    transition:0.5s;
+}
+button:hover{
+    border:none;
+    background-color:orange;
+    color:white;
+    cursor:pointer;
+    transition:0.5s;
+}

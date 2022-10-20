@@ -1,0 +1,46 @@
+
+.dataentrybutton{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+}
+
+.dataentrybutton button{
+    height:50px;
+    margin-left:5px;
+    width:150px;
+}
+
+.dataentrybutton form{
+    margin-top:0px;
+    margin-bottom:0px;
+}
+
+.desc{
+    width:40%;
+    border:solid;
+    padding:20px;
+    text-align:left;
+    background-color:white;
+}
+
+.desc h1{
+    font-size:30px;
+    text-align:left;
+}
+
+.desc p{
+    font-size:medium;
+    text-align:left;
+}
+
+.desc hr{
+    background-color:gray;
+    height:1px;
+    border:none;
+}
+
+.space{
+    height:30px;
+}

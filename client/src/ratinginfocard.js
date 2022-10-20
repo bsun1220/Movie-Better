@@ -1,7 +1,7 @@
 import React from "react";
 import './widget.css';
 
-export default function MovieInfoCard(prop){
+export default function RatingInfoCard(prop){
     return(
         <div className = "card">
             <h1>{prop.title}</h1>

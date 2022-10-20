@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import MovieInfoCard from './movieinfocard';
 
-export default function EndPointOne(){
+export default function TopMovies(){
 
     const [userInput, setUserInput] = useState("");
     const [error, setError] = useState("");
@@ -15,11 +15,11 @@ export default function EndPointOne(){
     }
 
     const handleSubmit = async (e) => {
-        const body = {"title":userInput};
-        const request = await axios.post(`http://localhost:5001/movie`, body);
+        const body = {"name":userInput};
+        const request = await axios.post(`http://localhost:5001/info`, body);
         const data = request.data;
         if (data.length === 0){
-            setError("TITLE NOT FOUND");
+            setError("ACTOR NOT FOUND");
             setTitleData("");
             setUserInput("");
             setMovieForm("");
@@ -50,14 +50,14 @@ export default function EndPointOne(){
 
     return(
         <div className = "body">
-            <h1 style = {{"marginTop":"40px"}}>Endpoint One</h1>
-            <p>Find a movie in our database. Enter name here:</p>
+            <h1 style = {{"marginTop":"40px"}}>An Actor's Top Movies</h1>
+            <p>Find the most famous movies that a given actor is in. Enter name here:</p>
             <div className = "hi">
                 <form>
                     <textarea 
                         onChange = {handleChange}
                         type = {"text"}
-                        placeholder = {"enter title"}
+                        placeholder = {"enter name"}
                         style = {{"maxHeight":"150px","minHeight":"30px","lineHeight":"1", "minWidth":"30vw", "maxWidth":"30vw"}}
                         value = {userInput}/>
                 </form>
