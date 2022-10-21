@@ -53,14 +53,15 @@ Router.get("/genre/:id", async(req, res) => {
 
     const rating_data = []
     time_data.forEach((data) => {
-        rating_data.push(data.rating);
+        rating_data.push([data.rating]);
     });
 
-    const expanding_mean = [rating_data[0]];
+    const expanding_mean = [];
+    expanding_mean.push(rating_data[0])
     for (let i = 1;  i < rating_data.length; i++){
         const n = expanding_mean.length;
-        const new_mean = (n * expanding_mean[i - 1] + rating_data[i])/(n + 1);
-        expanding_mean.push(Math.round(new_mean * 100)/100);
+        const new_mean = (n * expanding_mean[i - 1][0] + rating_data[i][0])/(n + 1);
+        expanding_mean.push([Math.round(new_mean * 100)/100]);
     }
 
     const final_data = {"min":min, "median":median,

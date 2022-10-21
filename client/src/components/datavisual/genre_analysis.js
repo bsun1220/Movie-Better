@@ -1,21 +1,35 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import GenreData from "./genredata";
 
 export default function GenreAnalysis(props){
     const [buttonData, setButtonData] = useState("");
-    const genre_data = props.genre.split(", ")
+    const genre_data = props.genre.split(", ");
 
-    const [visual, setVisual] = useState("")
+    const [datapage, setDataPage] = useState("");
 
-    const handleClick = (e) =>{
-        setVisual(e.target.value);
+    const handleClick = async(e) =>{
+        const val = e.target.value;
+        const url = 'http://localhost:5001/genre/' + val;
+        const request  = await axios.get(url);
+        const data = request.data;
+
+        if (data.length === 0){
+            setDataPage(<p style = {{"marginTop":"50px", "color":"red"}}>
+                No Data Found</p>)
+        }
+        else{
+            data["genre"] = val;
+            setDataPage(<GenreData  key = {"genre"} data = {data}/>);
+        }
     }
 
     useEffect(() => {
         const list = [];
         genre_data.forEach((data) => {
             const element = <button onClick = {handleClick} 
-                                    class = "secondarybutton"
+                                    key = {Math.random()}
+                                    className = "secondarybutton"
                                     value = {data}>
                                     {data}</button>
             list.push(element)
@@ -32,7 +46,8 @@ export default function GenreAnalysis(props){
                 </div>
                 <p style = {{"margin":"30px"}}> <i>Select a Genre to Analyze</i></p>
             </div>
-            <p>{visual}</p>
+            {datapage}
+
         </div>
     )
 }

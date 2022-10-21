@@ -12,8 +12,10 @@ export default function DirectorAnalysis(props){
     useEffect(() => {
         const list = [];
         director_data.forEach((data) => {
-            const element = <button onClick = {handleClick} 
-                                    class = "secondarybutton"
+            const element = <button 
+                                    key = {Math.random()}
+                                    onClick = {handleClick} 
+                                    className = "secondarybutton"
                                     value = {data}>
                                     {data}</button>
             list.push(element)
