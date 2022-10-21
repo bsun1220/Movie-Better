@@ -24,6 +24,15 @@ Router.get("/genre/:id", async(req, res) => {
     })
     const movies = await Movie.find({tid:{$in:list}}).sort({rating:-1});
 
+    if (movies.length === 0){
+        res.send(movies);
+        return;
+    }
+
+    const median = movies[Math.round(movies.length/2)].rating;
+    const max = movies[0].rating;
+    const min = movies[movies.length - 1].rating;
+
     let total = 0;
     movies.forEach((data) => total += data.rating);
     const avg = Math.round(total / movies.length * 100) / 100;
@@ -32,13 +41,35 @@ Router.get("/genre/:id", async(req, res) => {
     movies.forEach((data) => square_err += Math.pow(data.rating - avg, 2))
     const std = Math.round(Math.pow(square_err / movies.length, 0.5) * 100) / 100;
 
-    console.log(avg);
-    console.log(std);
+    const top_five = movies.slice(0, 5)
+    const popular = top_five.map(x => [x["title"], x["rating"]]);
 
-    const val = movies.slice(0, 5)
-    console.log(val.map(x => x));
+    const time_data = []
+    movies.forEach((data) => {
+        time_data.push({"year":data.year, "rating":data.rating})
+    })
 
-    res.send(movies);
+    time_data.sort((a,b) => a.year - b.year);
+
+    const rating_data = []
+    time_data.forEach((data) => {
+        rating_data.push(data.rating);
+    });
+
+    const expanding_mean = [rating_data[0]];
+    for (let i = 1;  i < rating_data.length; i++){
+        const n = expanding_mean.length;
+        const new_mean = (n * expanding_mean[i - 1] + rating_data[i])/(n + 1);
+        expanding_mean.push(Math.round(new_mean * 100)/100);
+    }
+
+    const final_data = {"min":min, "median":median,
+        "max":max,"mean":avg,"std":std,
+        "expanding_mean":expanding_mean,
+        "rating_data":rating_data,
+        "popular":popular};
+
+    res.send(final_data);
 });
 
 
