@@ -29,6 +29,7 @@ Router.post("/movie", async(req, res) => {
 
 //Reagan's Endpoint
 Router.post("/movieGenres", async(req, res) => {
+    
     const titleMovie = req.body.title;
     var myIds = new Array()
 

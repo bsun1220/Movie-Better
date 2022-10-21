@@ -39,6 +39,8 @@ Router.post("/info", async(req, res) => {
 
 Router.post("/infoRecent", async(req, res) => {
     const actorName = req.body.name;
+    console.log("the request")
+    console.log(actorName)
     const actorID = await Info.find({name:actorName}, {uid:1})
     var id = new Array()
     Array.from(actorID).forEach(function(test){id.push(test.uid)})
@@ -46,7 +48,7 @@ Router.post("/infoRecent", async(req, res) => {
     var tids = new Array()
     Array.from(famous).forEach(function(test2){tids.push(test2.tid)})
     const ans = await Movie.find({tid: {$in:tids}}).sort({year:-1}).limit(10);
-    
+    console.log(ans)
     try{
         res.send(ans);
     }
