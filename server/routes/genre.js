@@ -61,7 +61,7 @@ Router.get("/genre/:id", async(req, res) => {
     for (let i = 1;  i < rating_data.length; i++){
         const n = expanding_mean.length;
         const new_mean = (n * expanding_mean[i - 1][1] + rating_data[i][0])/(n + 1);
-        expanding_mean.push([i + 1, Math.round(new_mean * 100)/100]);
+        expanding_mean.push([i + 1, new_mean]);
     }
 
     const final_data = {"min":min, "median":median,
