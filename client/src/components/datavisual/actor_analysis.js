@@ -84,6 +84,7 @@ export default function ActorAnalysis(props){
         <div className="body">
         <h1 style = {{"marginTop":"20px",color:"black"}}>{userInput}</h1>
                {movieForm}
+               <p style = {{marginTop:"30px", color:"red"}}>{error}</p>
         </div>
         </div>
     )
