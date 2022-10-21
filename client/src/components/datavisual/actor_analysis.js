@@ -39,7 +39,8 @@ export default function ActorAnalysis(props){
         const list = [];
         actor_data.forEach((data) => {
             const element = <button onClick = {handleClick} 
-                                    class = "secondarybutton"
+                                    className = "secondarybutton"
+                                    key = {Math.random()}
                                     value = {data}>
                                     {data}</button>
 

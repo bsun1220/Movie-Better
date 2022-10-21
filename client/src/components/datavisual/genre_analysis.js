@@ -20,6 +20,8 @@ export default function GenreAnalysis(props){
         }
         else{
             data["genre"] = val;
+            data["rating_data"].splice(0, 0, [val]);
+            data["expanding_mean"].splice(0, 0, ["entry", "Mean Rating"]);
             setDataPage(<GenreData  key = {"genre"} data = {data}/>);
         }
     }

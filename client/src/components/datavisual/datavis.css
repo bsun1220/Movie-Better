@@ -54,7 +54,7 @@
 
 .buttonSelection button{
     margin-inline:5vw;
-    height:7vh;
+    min-height:7vh;
     min-width:10vw;
     margin-bottom:50px;
 }
@@ -64,6 +64,7 @@
     color:rgb(28, 24, 24);
     min-height:50vh;
     padding-top:50px;
+    padding-bottom:50px;
     width:100%;
     margin:0px;
     margin-top:50px;
@@ -93,6 +94,16 @@
 
 .datachart{
     display:flex;
-    margin-top:30px;
-    align-items:center;
+    margin-top:50px;
+    justify-content:center;
+    flex-wrap:wrap;
+    width:100%;
+}
+
+.datachart hr{
+    width:100%;
+    color:aliceblue;
+    margin-top:35px;
+    border:none;
+
 }
