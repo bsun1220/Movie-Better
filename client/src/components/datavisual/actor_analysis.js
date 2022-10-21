@@ -45,8 +45,6 @@ export default function ActorAnalysis(props){
 
             list.push(element)
         })
-        console.log("the list")
-        console.log(list)
 
 
         setButtonData(list)

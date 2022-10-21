@@ -43,8 +43,30 @@ Router.post("/infoRecent", async(req, res) => {
     console.log(actorName)
     const actorID = await Info.find({name:actorName}, {uid:1})
     var id = new Array()
+    var search= [/^acto/,/^actr/]
     Array.from(actorID).forEach(function(test){id.push(test.uid)})
-    const famous = await Crew.find({uid:id[0], category: {$in:[/^acto/,/^actr/]}},{tid:1})
+    const famous = await Crew.find({uid:id[0], category: {$in:search}},{tid:1})
+    var tids = new Array()
+    Array.from(famous).forEach(function(test2){tids.push(test2.tid)})
+    const ans = await Movie.find({tid: {$in:tids}}).sort({year:-1}).limit(10);
+    console.log(ans)
+    try{
+        res.send(ans);
+    }
+    catch(e){
+        res.status(500).send(e);
+    }
+});
+
+Router.post("/infoRecentD", async(req, res) => {
+    const actorName = req.body.name;
+    console.log("the request")
+    console.log(actorName)
+    const actorID = await Info.find({name:actorName}, {uid:1})
+    var id = new Array()
+    var search= [/^d/,/^dire/]
+    Array.from(actorID).forEach(function(test){id.push(test.uid)})
+    const famous = await Crew.find({uid:id[0], category: {$in:search}},{tid:1})
     var tids = new Array()
     Array.from(famous).forEach(function(test2){tids.push(test2.tid)})
     const ans = await Movie.find({tid: {$in:tids}}).sort({year:-1}).limit(10);
