@@ -1,20 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Chart from "react-google-charts";
 
-export default function GenreData(props){
+export default function DirectorData(props){
     const histogramChartOption = {
-        title : `${props.data.genre} Rating Histogram`,
+        title : `${props.data.director} Rating Histogram`,
         legend: { position: 'top', maxLines: 2 },
         colors: ['#5D47C7'],
         interpolateNulls: false,
     };
-
     const lineChartOption = {
-        title: `${props.data.genre} Expanding Mean Rating Time Series`,
+        title: `${props.data.director}'s Ratings Over Time`,
         legend: {position: 'top', maxLines : 2},
         colors: ['#5D47C7'],
         interpolateNulls: false,
     }
+    useEffect(() => {
+        console.log(props.data)
+    }, [])
 
     return(
         <div className = "datachart">
@@ -32,7 +34,7 @@ export default function GenreData(props){
                 loader={<div>Loading Chart...</div>}
                 width={'40vw'}
                 height={'20vh'}
-                data = {props.data.rating_data}/>
+                data = {props.data.rating_list}/>
             </div>
             <hr/>
             <div style = {{"borderStyle":"solid", "marginRight":"20px"}}><Chart 
@@ -41,21 +43,19 @@ export default function GenreData(props){
                 loader={<div>Loading Chart...</div>}
                 width={'30vw'}
                 height={'20vh'}
-                data = {props.data.expanding_mean}/>
+                data = {props.data.line_list}/>
             </div>
             <div style = {{"justifyContent":"flex-start", 
                             "backgroundColor":"white", "padding":"10px", 
                             "borderStyle":"solid", "textAlign":"left"
                             }}>
-                <h1 style = {{"fontSize":"20px", "marginBottom":"10px"}}>Most Popular Movies</h1>
-                <p style = {{"textAlign":"left"}}>1: {props.data.popular[0][0]} ({props.data.popular[0][1]})</p>
-                <p style = {{"textAlign":"left"}}>2: {props.data.popular[1][0]} ({props.data.popular[1][1]})</p>
-                <p style = {{"textAlign":"left"}}>3: {props.data.popular[2][0]} ({props.data.popular[2][1]})</p>
-                <p style = {{"textAlign":"left"}}>4: {props.data.popular[3][0]} ({props.data.popular[3][1]})</p>
-                <p style = {{"textAlign":"left"}}>5: {props.data.popular[4][0]} ({props.data.popular[4][1]})</p>
+                <h1 style = {{"fontSize":"20px", "marginBottom":"10px"}}>Most Recent Movies</h1>
+                <p style = {{"textAlign":"left"}}>1: {props.data.rec_five[0]["title"]} ({props.data.rec_five[0]["year"]})</p>
+                <p style = {{"textAlign":"left"}}>2: {props.data.rec_five[1]["title"]} ({props.data.rec_five[1]["year"]})</p>
+                <p style = {{"textAlign":"left"}}>3: {props.data.rec_five[2]["title"]} ({props.data.rec_five[2]["year"]})</p>
+                <p style = {{"textAlign":"left"}}>4: {props.data.rec_five[3]["title"]} ({props.data.rec_five[3]["year"]})</p>
+                <p style = {{"textAlign":"left"}}>5: {props.data.rec_five[4]["title"]} ({props.data.rec_five[4]["year"]})</p>
             </div>
-                
-            
         </div>
     )
 }
