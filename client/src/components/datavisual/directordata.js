@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect , useState } from "react";
 import Chart from "react-google-charts";
 
 export default function DirectorData(props){
+    const [five, setFive] = useState("");
     const histogramChartOption = {
         title : `${props.data.director} Rating Histogram`,
         legend: { position: 'top', maxLines: 2 },
@@ -15,7 +16,13 @@ export default function DirectorData(props){
         interpolateNulls: false,
     }
     useEffect(() => {
-        console.log(props.data)
+        const list = []
+        let i = 1
+        props.data.rec_five.forEach((val) => {
+            list.push(<p key = {Math.random()}>{i}: {props.data.rec_five[i - 1]["title"]} ({props.data.rec_five[i - 1]["year"]})</p>);
+            i += 1;
+        })
+        setFive(list);
     }, [])
 
     return(
@@ -50,11 +57,7 @@ export default function DirectorData(props){
                             "borderStyle":"solid", "textAlign":"left"
                             }}>
                 <h1 style = {{"fontSize":"20px", "marginBottom":"10px"}}>Most Recent Movies</h1>
-                <p style = {{"textAlign":"left"}}>1: {props.data.rec_five[0]["title"]} ({props.data.rec_five[0]["year"]})</p>
-                <p style = {{"textAlign":"left"}}>2: {props.data.rec_five[1]["title"]} ({props.data.rec_five[1]["year"]})</p>
-                <p style = {{"textAlign":"left"}}>3: {props.data.rec_five[2]["title"]} ({props.data.rec_five[2]["year"]})</p>
-                <p style = {{"textAlign":"left"}}>4: {props.data.rec_five[3]["title"]} ({props.data.rec_five[3]["year"]})</p>
-                <p style = {{"textAlign":"left"}}>5: {props.data.rec_five[4]["title"]} ({props.data.rec_five[4]["year"]})</p>
+                {five}
             </div>
         </div>
     )
