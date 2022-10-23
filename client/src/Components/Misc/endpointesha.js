@@ -1,17 +1,16 @@
-//import './widget.css';
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import MovieInfoCard from './movieinfocard';
+import MovieInfoCard from '../InfoCards/MovieInfoCard';
 
 
 export default function EndPointEsha() {
 
 
-    const [userInput, setUserInput] = useState("");
+    // const [userInput, setUserInput] = useState("");
     const [error, setError] = useState("");
     const [titleData, setTitleData] = useState("");
     const [movieForm, setMovieForm] = useState("");
-    const [name, setName] = useState("");
+    // const [name, setName] = useState("");
 
 
     const handleClick = async(e) => {
@@ -67,6 +66,7 @@ export default function EndPointEsha() {
                     Romance</button>
             </div>
             {movieForm}
+            {error}
             
         </div>
     )

@@ -1,21 +1,3 @@
-p{
-    font-family:Arial;
-    text-align:center;
-    margin:0px;
-}
-
-h1{
-    font-family:Arial;
-    text-align:center;
-    margin:0px;
-}
-
-h2{
-    font-family:Arial;
-    text-align:center;
-    margin:0px;
-}
-
 .page{
     background-color:aliceblue;
     width:100%;
@@ -137,6 +119,7 @@ button:hover{
     transition:0.5s;
 }
 
+
 .secondarybutton{
     background-color:rgb(40, 134, 196);
     color:white;
@@ -149,4 +132,21 @@ button:hover{
     color:rgb(40, 134, 196);
     cursor:pointer;
     transition:0.5s;
+}
+
+.custom-btn{
+    border-radius: 25px;
+    transition: transform .2s; 
+}
+
+.custom-btn:hover {
+    transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
+.custom-btn:active {
+    transform: scale(1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
+.custom-form{
+    border-radius: 25px;
 }

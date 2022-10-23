@@ -1,36 +1,32 @@
-import './widget.css';
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import GenreInfoCard from './genreinfocard';
+import MovieInfoCard from '../InfoCards/MovieInfoCard';
 
-export default function GenreEndpoint(){
+export default function TopMovies(){
 
     const [userInput, setUserInput] = useState("");
     const [error, setError] = useState("");
     const [titleData, setTitleData] = useState("");
     const [movieForm, setMovieForm] = useState("");
-    const [inputData, setInputData]= useState("");
 
     const handleChange = (e) =>{
         setUserInput(e.target.value);
     }
 
-    const handleSubmit = async(e) => {
-        const body = {"title":userInput};
-        const request = await axios.post(`http://localhost:5001/movieGenres`, body);
+    const handleSubmit = async (e) => {
+        const body = {"name":userInput};
+        const request = await axios.post(`http://localhost:5001/info`, body);
         const data = request.data;
         if (data.length === 0){
-            setError("TITLE NOT FOUND");
+            setError("ACTOR NOT FOUND");
             setTitleData("");
             setUserInput("");
             setMovieForm("");
-            setInputData("");
         }
         else{
             setError("");
             setUserInput("");
             setTitleData(data);
-            setInputData(userInput +"'s Genres:");
         }
     }
 
@@ -39,11 +35,12 @@ export default function GenreEndpoint(){
             const list = []
             titleData.forEach((data) => {
 
-                const {_id, title, genre} = data;
+                const {title, year, length, tid, votes, rating} = data;
 
                 list.push(
-                    <GenreInfoCard key = {_id} title = 
-                    {title} genre= {genre}/>
+                    <MovieInfoCard key = {tid} title = 
+                    {title} year = {year} length = {length}
+                    rating = {rating} votes = {votes}/>
                 )
             })
             setMovieForm(list);
@@ -52,21 +49,20 @@ export default function GenreEndpoint(){
 
     return(
         <div className = "body">
-            <h1 style = {{"marginTop":"40px"}}>Genre Endpoint</h1>
-            <p>Find the genres of a given movie from our database. Enter name here:</p>
+            <h1 style = {{"marginTop":"40px"}}>An Actor's Top Movies</h1>
+            <p>Find the most famous movies that a given actor is in. Enter name here:</p>
             <div className = "hi">
                 <form>
                     <textarea 
                         onChange = {handleChange}
                         type = {"text"}
-                        placeholder = {"enter title"}
+                        placeholder = {"enter name"}
                         style = {{"maxHeight":"150px","minHeight":"30px","lineHeight":"1", "minWidth":"30vw", "maxWidth":"30vw"}}
                         value = {userInput}/>
                 </form>
                 <button style = {{"width":"30.5vw"}} onClick = {handleSubmit}>
                     Submit</button>
             </div>
-            <h1 style = {{"marginTop":"20px",color:"black"}}>{inputData}</h1>
             {movieForm}
             <p style = {{marginTop:"30px", color:"red"}}>{error}</p>
         </div>

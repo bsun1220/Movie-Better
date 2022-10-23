@@ -1,9 +1,8 @@
-import './widget.css';
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import MovieInfoCard from './movieinfocard';
+import MovieInfoCard from '../Components/InfoCards/MovieInfoCard';
 
-export default function TopMovies(){
+export default function DirectorSearch(){
 
     const [userInput, setUserInput] = useState("");
     const [error, setError] = useState("");
@@ -16,10 +15,10 @@ export default function TopMovies(){
 
     const handleSubmit = async (e) => {
         const body = {"name":userInput};
-        const request = await axios.post(`http://localhost:5001/info`, body);
+        const request = await axios.post(`http://localhost:5001/infoRecentD`, body);
         const data = request.data;
         if (data.length === 0){
-            setError("ACTOR NOT FOUND");
+            setError("DIRECTOR NOT FOUND");
             setTitleData("");
             setUserInput("");
             setMovieForm("");
@@ -50,20 +49,21 @@ export default function TopMovies(){
 
     return(
         <div className = "body">
-            <h1 style = {{"marginTop":"40px"}}>An Actor's Top Movies</h1>
-            <p>Find the most famous movies that a given actor is in. Enter name here:</p>
+            <h1 style = {{"marginTop":"40px"}}>Director Search</h1>
+            <p>Find the recent movies that someone has directed. Enter name here:</p>
             <div className = "hi">
                 <form>
-                    <textarea 
+                    <input 
                         onChange = {handleChange}
                         type = {"text"}
                         placeholder = {"enter name"}
                         style = {{"maxHeight":"150px","minHeight":"30px","lineHeight":"1", "minWidth":"30vw", "maxWidth":"30vw"}}
                         value = {userInput}/>
                 </form>
-                <button style = {{"width":"30.5vw"}} onClick = {handleSubmit}>
+                <button className = "custom-btn btn amber black-text " style = {{"width":"30.5vw"}} onClick = {handleSubmit}>
                     Submit</button>
             </div>
+            <br></br>
             {movieForm}
             <p style = {{marginTop:"30px", color:"red"}}>{error}</p>
         </div>

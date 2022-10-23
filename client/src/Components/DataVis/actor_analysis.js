@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import MovieInfoCard from '../../movieinfocard';
+import MovieInfoCard from '../InfoCards/MovieInfoCard';
 
 export default function ActorAnalysis(props){
 

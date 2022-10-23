@@ -62,4 +62,17 @@ Router.post("/rating", async(req, res) => {
     }
 });
 
+//Bharat's Endpoint
+Router.post("/time", async(req, res) => {
+    const startYear = req.body.startYear;
+    const endYear = req.body.endYear;
+    const yearMovies = await Movie.find({year:{$gte: startYear, $lte: endYear}}).sort({rating:-1})
+    try{
+        res.send(yearMovies.slice(0,10));
+    }
+    catch(e){
+        res.status(500).send(e);
+    }
+});
+
 module.exports = Router;

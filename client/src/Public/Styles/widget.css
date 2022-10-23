@@ -21,13 +21,12 @@ input{
 }
 
 .card{
-    margin-top:30px;
-    background-color:darkblue;
+    /* margin-top:30px; */
     width:30vw;
     display:flex;
-    border-style:solid;
-    border-color:black;
-    border-radius:3px;
+    /* border-style:solid; */
+    /* border-color:black; */
+    border-radius:25px;
     flex-direction:column;
 }
 

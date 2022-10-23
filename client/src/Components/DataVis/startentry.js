@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import "../generalstyle/general.css"
 import "./datavis.css"
 import axios from "axios";
 import MovieDesc from "./moviedesc";

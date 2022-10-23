@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import "../generalstyle/general.css"
 import StartEntry from "./startentry";
 
 export default function DataVisPage(){
@@ -13,7 +12,7 @@ export default function DataVisPage(){
     return(<div>
         <div className = {"frontpage"}>
             <div style = {{"display":"flex", "alignItems":"center"}}>
-                <img src = "research.svg" height = "100px"/>
+                <img src =  "research.svg" height = "100px"/>
                 <h1 style = {{"marginLeft": "20px"}}>DataVis</h1>
             </div>
             <p style = {{"marginTop":"10px"}}>Quant Research</p>
