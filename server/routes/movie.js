@@ -75,4 +75,17 @@ Router.post("/time", async(req, res) => {
     }
 });
 
+//Hugh's Endpoint
+Router.post("/length", async(req, res) => {
+    const minimumDuration = req.body.minimumDuration;
+    const maximumDuration = req.body.maximumDuration;
+    const durationMovies = await Movie.find({length:{$gte: minimumDuration, $lte: maximumDuration}}).sort({rating:-1})
+    try{
+        res.send(durationMovies.slice(0,10));
+    }
+    catch(e){
+        res.status(500).send(e);
+    }
+});
+
 module.exports = Router;

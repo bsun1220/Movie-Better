@@ -10,6 +10,7 @@ import DataVisPage from "./Components/DataVis/datavispage";
 import ActorSearch from "./Pages/ActorSearch.js";
 import DirectorSearch from "./Pages/DirectorSearch.js";
 import TimeSearch from "./Pages/TimeSearch.js";
+import LengthSearch from "./Pages/LengthSearch.js";
 
 import "./Public/Styles/index.css"
 import "./Public/Styles/widget.css"
@@ -28,6 +29,7 @@ const App = () => {
                         <li><a href="/search/actor">Actor</a></li>
                         <li><a href="/search/director">Director</a></li>
                         <li><a href="/search/time">Time</a></li>
+                        <li><a href="/search/length">Length</a></li>
                         <li><a href="/select/genre">Select</a></li>
                         <li><a href="/datavis">Data Vis</a></li>
                     </ul>
@@ -42,6 +44,7 @@ const App = () => {
                 <Route exact path = "/search/actor" element = {<ActorSearch/>}/>
                 <Route exact path = "/search/director" element = {<DirectorSearch/>}/>
                 <Route exact path = "/search/time" element = {<TimeSearch/>}/>
+                <Route exact path = "/search/length" element = {<LengthSearch/>}/>
                 <Route exact path = "/select/genre" element = {<GenreSelect/>}/>
                 <Route exact path = "/datavis" element = {<DataVisPage/>}/>
                 
