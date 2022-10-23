@@ -17,11 +17,12 @@ Router.put("/info", async(req, res) => {
 
 });
 
-Router.get("/director/:name", async(req,res)=>{
+Router.get("/crew/:name", async(req,res)=>{
     const id = req.params.name;
     const director_info = await Info.find({name:id}).limit(1);
-    if (director_info.length === 0){
+    if (director_info.length === 0 || director_info === null){
         res.send([]);
+        return;
     }
     const director_id = director_info[0]["uid"];
     const crew = await Crew.find({uid:director_id});
@@ -34,6 +35,7 @@ Router.get("/director/:name", async(req,res)=>{
         const element = request[0];
         movie_list.push(element);
     }
+
     if(movie_list.length === 0){
         res.send(movie_list);
     }
@@ -41,7 +43,7 @@ Router.get("/director/:name", async(req,res)=>{
     movie_list.sort((a, b) => b.rating - a.rating);
 
     const min = movie_list[movie_list.length - 1]["rating"];
-    const median = movie_list[Math.round(movie_list.length/2)]["rating"];
+    const median = movie_list[Math.round((movie_list.length - 1)/2)]["rating"];
     const max = movie_list[0]["rating"];
 
     let total = 0;
@@ -101,8 +103,6 @@ Router.post("/info", async(req, res) => {
 
 Router.post("/infoRecent", async(req, res) => {
     const actorName = req.body.name;
-    console.log("the request")
-    console.log(actorName)
     const actorID = await Info.find({name:actorName}, {uid:1})
     var id = new Array()
     var search= [/^acto/,/^actr/]
@@ -111,7 +111,6 @@ Router.post("/infoRecent", async(req, res) => {
     var tids = new Array()
     Array.from(famous).forEach(function(test2){tids.push(test2.tid)})
     const ans = await Movie.find({tid: {$in:tids}}).sort({year:-1}).limit(10);
-    console.log(ans)
     try{
         res.send(ans);
     }
@@ -122,8 +121,6 @@ Router.post("/infoRecent", async(req, res) => {
 
 Router.post("/infoRecentD", async(req, res) => {
     const actorName = req.body.name;
-    console.log("the request")
-    console.log(actorName)
     const actorID = await Info.find({name:actorName}, {uid:1})
     var id = new Array()
     var search= [/^d/,/^dire/]
@@ -132,7 +129,6 @@ Router.post("/infoRecentD", async(req, res) => {
     var tids = new Array()
     Array.from(famous).forEach(function(test2){tids.push(test2.tid)})
     const ans = await Movie.find({tid: {$in:tids}}).sort({year:-1}).limit(10);
-    console.log(ans)
     try{
         res.send(ans);
     }

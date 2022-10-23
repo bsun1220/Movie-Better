@@ -12,8 +12,8 @@ import DirectorSearch from "./Pages/DirectorSearch.js";
 import TimeSearch from "./Pages/TimeSearch.js";
 
 import "./Public/Styles/index.css"
-import "./Public/Styles/general.css"
 import "./Public/Styles/widget.css"
+import "./Public/Styles/general.css"
 
 const App = () => {
     return (

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import DirectorData from "./directordata";
+import CrewData from "./crewdata";
 
 
 export default function DirectorAnalysis(props){
@@ -10,7 +10,7 @@ export default function DirectorAnalysis(props){
 
     const handleClick = async(e) =>{
         const val = e.target.value;
-        const url = 'http://localhost:5001/director/' + val;
+        const url = 'http://localhost:5001/crew/' + val;
         const request  = await axios.get(url);
         const data = request.data;
         if (data.length === 0){
@@ -21,7 +21,7 @@ export default function DirectorAnalysis(props){
             data["director"] = val;
             data["rating_list"].splice(0, 0, [val]);
             data["line_list"].splice(0, 0, ["entry", "Rating"]);
-            setDataPage(<DirectorData  key = {val} data = {data}/>);
+            setDataPage(<CrewData  key = {val} data = {data}/>);
         }
 
     }

@@ -1,36 +1,26 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import MovieInfoCard from '../InfoCards/MovieInfoCard';
+import CrewData from "./crewdata";
 
 export default function ActorAnalysis(props){
-
     const [buttonData, setButtonData] = useState("");
     const actor_data = props.actors.split(", ")
-    const [userInput, setUserInput] = useState("");
-    const [error, setError] = useState("");
-    const [titleData, setTitleData] = useState("");
-    const [movieForm, setMovieForm] = useState("");
+    const [datapage, setDataPage] = useState("");
 
-    const handleClick = async (e) =>{
-        console.log(e.target.value);
-        const body = {"name":e.target.value};
-        console.log("name passed");
-        console.log(body.name);
-        const request = await axios.post(`http://localhost:5001/infoRecent`, body);
-        const data1 = request.data;
-        console.log("sent data")
-        console.log(data1)
-        if (data1.length === 0){
-            setError("NO RECENT MOVIES");
-            setTitleData("");
-            setUserInput("");
-            setMovieForm("");
+    const handleClick = async(e) =>{
+        const val = e.target.value;
+        const url = 'http://localhost:5001/crew/' + val;
+        const request  = await axios.get(url);
+        const data = request.data;
+        if (data.length === 0){
+            setDataPage(<p style = {{"marginTop":"50px", "color":"red"}}>
+                No Data Found</p>)
         }
         else{
-            setError("");
-            setUserInput(body.name+"'s Recent Movies:");
-            setTitleData(data1);
-    
+            data["director"] = val;
+            data["rating_list"].splice(0, 0, [val]);
+            data["line_list"].splice(0, 0, ["entry", "Rating"]);
+            setDataPage(<CrewData  key = {val} data = {data}/>);
         }
 
     }
@@ -38,53 +28,27 @@ export default function ActorAnalysis(props){
     useEffect(() => {
         const list = [];
         actor_data.forEach((data) => {
-            const element = <button onClick = {handleClick} 
-                                    className = "secondarybutton"
+            const element = <button 
                                     key = {Math.random()}
+                                    onClick = {handleClick} 
+                                    className = "secondarybutton"
                                     value = {data}>
                                     {data}</button>
-
             list.push(element)
         })
-
-
         setButtonData(list)
     }, []);
 
-
-    useEffect(() =>{
-        if (titleData !== ""){
-            const list = []
-            titleData.forEach((data) => {
-
-                const {title, year, length, tid, votes, rating} = data;
-
-                list.push(
-                    <MovieInfoCard key = {tid} title = 
-                    {title} year = {year} length = {length}
-                    rating = {rating} votes = {votes}/>
-                )
-            })
-            setMovieForm(list);
-        }
-    },[titleData])
-
-
-
     return(
         <div className = "analysis">
-        <h1 style = {{"marginBottom":"30px"}}>Actor Analysis</h1>
-        <div className = "selectoption">
-            <div className = "buttonsetup">
-            {buttonData}
+            <h1 style = {{"marginBottom":"30px"}}>Actor Analysis</h1>
+            <div className = "selectoption">
+                <div className = "buttonsetup">
+                {buttonData}
+                </div>
+                <p style = {{"margin":"30px"}}> <i>Select an Actor to Analyze</i></p>
             </div>
-            <p style = {{"margin":"30px"}}> <i>Select an Actor to Analyze</i></p>
-        </div>
-        <div className="body">
-        <h1 style = {{"marginTop":"20px",color:"black"}}>{userInput}</h1>
-               {movieForm}
-               <p style = {{marginTop:"30px", color:"red"}}>{error}</p>
-        </div>
+            {datapage}
         </div>
     )
 }

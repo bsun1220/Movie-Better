@@ -30,7 +30,8 @@
     color:white;
     background-color:aliceblue;
     margin:0px;
-    padding-top:7vh;
+    padding-top:5vh;
+    padding-bottom:5vh;
     padding-inline:15vw;
     min-height:50vh;
     display:flex;
@@ -42,9 +43,9 @@
 
 .aboutpage h1{
     text-align:left;
-    font-stretch: narrower;
     color:rgb(28, 24, 24);
     margin-left:0px;
+    font-size:40px;
 }
 
 .aboutpage hr{
@@ -101,6 +102,10 @@ textarea:focus{
     outline:none;
 }
 
+textarea{
+    font-family:monospace;
+}
+
 button{
     background-color:gold;
     font-size:large;
@@ -111,6 +116,7 @@ button{
     color:gray;
     transition:0.5s;
 }
+
 button:hover{
     border:none;
     background-color:orange;
