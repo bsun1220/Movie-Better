@@ -1,10 +1,10 @@
 //import './widget.css';
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import MovieInfoCard from '../InfoCards/MovieInfoCard';
+import MovieInfoCard from '../Components/InfoCards/MovieInfoCard'
 
 
-export default function EndPointEsha() {
+export default function GenreSelect() {
 
 
     // const [userInput, setUserInput] = useState("");
@@ -54,16 +54,21 @@ export default function EndPointEsha() {
 
     return (
         <div className = "body">
-            <h1 style = {{"marginTop":"40px"}}>EndpointEsha</h1>
+            <h1 style = {{"marginTop":"40px"}}>Genre Select</h1>
             <div className = "button">
                 <button id= {"Action"}
-                style = {{"width":"30.5vw", "maxHeight":"150px","minHeight":"30px","lineHeight":"1", "minWidth":"30vw", "maxWidth":"30vw"}} onClick={(e) => handleClick(e)}>
+                 style = {{"width":"30.5vw", "maxHeight":"150px","minHeight":"30px","lineHeight":"1", "minWidth":"30vw", "maxWidth":"30vw"}}
+                 className = "btn-large waves-effect amber black-text" onClick={(e) => handleClick(e)}>
                     Action</button>
 
-                <button id = {"Horror"} style = {{"width":"30.5vw", "maxHeight":"150px","minHeight":"30px","lineHeight":"1", "minWidth":"30vw", "maxWidth":"30vw"}} onClick={(e) => handleClick(e)}>
+                <button id = {"Horror"} 
+                 className = "btn-large amber waves-effect black-text"
+                style = {{"width":"30.5vw", "maxHeight":"150px","minHeight":"30px","lineHeight":"1", "minWidth":"30vw", "maxWidth":"30vw"}} onClick={(e) => handleClick(e)}>
                     Horror</button>
 
-                <button id = {"Romance"} style = {{"width":"30.5vw", "maxHeight":"150px","minHeight":"30px","lineHeight":"1", "minWidth":"30vw", "maxWidth":"30vw"}}  onClick={(e) => handleClick(e)}>
+                <button id = {"Romance"} 
+                className = "btn-large waves-effect amber black-text"
+                style = {{"width":"30.5vw", "maxHeight":"150px","minHeight":"30px","lineHeight":"1", "minWidth":"30vw", "maxWidth":"30vw"}}  onClick={(e) => handleClick(e)}>
                     Romance</button>
             </div>
             {movieForm}

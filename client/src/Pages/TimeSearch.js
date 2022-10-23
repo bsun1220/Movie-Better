@@ -50,7 +50,7 @@ export default function TitleSearch() {
 
     return (
         <div className = "body">
-                <h1 >Time Frame Search</h1>
+                <h1  style = {{"marginTop":"40px"}} >Time Frame Search</h1>
                 <p>Find the top 10 movies from a given time frame</p>
                 <div className="hi">
                 <div className = "row"></div>

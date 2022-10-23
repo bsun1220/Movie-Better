@@ -51,7 +51,7 @@ export default function GenreSearch(){
 
     return(
         <div className = "body">
-            <h1>Genre Search</h1>
+            <h1  style = {{"marginTop":"40px"}}>Genre Search</h1>
             <p>Find the genres of a given movie from our database. Enter name here:</p>
             <div className = "hi">
                 <form>

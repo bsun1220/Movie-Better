@@ -1,7 +1,7 @@
 import React, { useEffect , useState } from "react";
 import Chart from "react-google-charts";
 
-export default function DirectorData(props){
+export default function CrewData(props){
     const [five, setFive] = useState("");
     const histogramChartOption = {
         title : `${props.data.director} Rating Histogram`,
@@ -19,7 +19,7 @@ export default function DirectorData(props){
         const list = []
         let i = 1
         props.data.rec_five.forEach((val) => {
-            list.push(<p key = {Math.random()}>{i}: {props.data.rec_five[i - 1]["title"]} ({props.data.rec_five[i - 1]["year"]})</p>);
+            list.push(<p key = {Math.random()} style = {{"textAlign":"left"}}>{i}: {props.data.rec_five[i - 1]["title"]} ({props.data.rec_five[i - 1]["year"]})</p>);
             i += 1;
         })
         setFive(list);

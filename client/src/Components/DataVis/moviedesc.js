@@ -46,9 +46,9 @@ export default function MovieDesc(props){
                     <p style = {{"fontSize":"12px"}}>Actors: {props.actors}</p>
                 </div>
             <div className = "buttonSelection">
-                <button onClick = {setGenre}>Genre</button>
-                <button onClick = {setDirectors}>Directors</button>
-                <button onClick = {setActors}>Actors</button>
+                <button className = "custom-btn btn amber black-text" onClick = {setGenre}>Genre</button>
+                <button className = "custom-btn btn amber black-text" onClick = {setDirectors}>Directors</button>
+                <button className = "custom-btn btn amber black-text" onClick = {setActors}>Actors</button>
             </div>
             {pageElement}
         </div>)

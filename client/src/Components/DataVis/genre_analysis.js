@@ -31,7 +31,7 @@ export default function GenreAnalysis(props){
         genre_data.forEach((data) => {
             const element = <button onClick = {handleClick} 
                                     key = {Math.random()}
-                                    className = "secondarybutton"
+                                    className = "custom-btn-two waves-effect btn blue-grey"
                                     value = {data}>
                                     {data}</button>
             list.push(element)

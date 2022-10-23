@@ -49,7 +49,7 @@ export default function TitleSearch() {
 
     return (
         <div className = "body">
-                <h1 >Title Search</h1>
+                <h1  style = {{"marginTop":"40px"}} >Title Search</h1>
                 <p>Find a movie in our database. Enter name here:</p>
                 <div className="hi">
                     <form className = "custom-form">

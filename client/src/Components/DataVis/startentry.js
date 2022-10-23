@@ -92,7 +92,7 @@ export default function StartEntry(){
                 value = {titleInput}
                 />
             </form>
-            <button onClick = {handleClick}>Submit</button>
+            <button className = "custom-btn btn amber black-text" onClick = {handleClick}>Submit</button>
         </div>
         <p style = {{"color":"red", "marginTop":"30px", "fontWeight":"bold"}}>{error}</p>
         {desc}
