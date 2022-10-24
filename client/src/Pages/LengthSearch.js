@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import MovieInfoCard from '../Components/InfoCards/MovieInfoCard';
 
-export default function TitleSearch() {
+export default function LengthSearch() {
 
     const [minLength, setMinLength] = useState(null);
     const [maxLength, setMaxLength] = useState(null);

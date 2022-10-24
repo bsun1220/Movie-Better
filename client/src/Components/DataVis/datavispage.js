@@ -1,13 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 import StartEntry from "./startentry";
 
 export default function DataVisPage(){
-
-    const [page, setPage] = useState("start");
-
-    const ref = {
-        "start":<StartEntry/>
-    }
 
     return(<div>
         <div className = {"frontpage"}>
@@ -41,7 +35,7 @@ export default function DataVisPage(){
                 on what the predicted value is, the user can place a bet on the separate betting platform page.
             </p>
         </div>
-        {ref[page]}
+        <StartEntry/>
 
 
     </div>)

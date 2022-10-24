@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import MovieInfoCard from '../Components/InfoCards/MovieInfoCard';
 
-export default function TitleSearch() {
+export default function TimeSearch() {
 
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
