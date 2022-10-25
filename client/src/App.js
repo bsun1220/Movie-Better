@@ -1,9 +1,8 @@
 import React from "react";
 import { Route, Routes} from "react-router-dom";
-import HomePage from "./Pages/HomePage";
 import DataVisPage from "./Components/DataVis/datavispage";
 import SearchPage from "./Pages/SearchPage";
-
+import HomePage from "./Components/Home/home";
 
 import "./Public/Styles/index.css"
 import "./Public/Styles/widget.css"
@@ -26,11 +25,6 @@ const App = () => {
                 <Route exact path = "/" element = {<HomePage/>}/>
                 <Route exact path = "/search" element = {<SearchPage/>} />
                 <Route exact path = "/datavis" element = {<DataVisPage/>}/>
-                
-
-                {/* No Longer Needed */}
-
-                {/* <Route exact path = "/topmovies" element = {<TopMovies/>}/> */}
             </Routes>
         </div>
     );
