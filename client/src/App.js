@@ -11,7 +11,7 @@ import "./Public/Styles/general.css"
 const App = () => {
     return (
         <div>
-            <nav class="nav-center z-depth-0" role="navigation" style = {{"backgroundColor":"#e6e8f4"}}>
+            <nav class="nav-center z-depth-0" role="navigation" style = {{"backgroundColor":"aliceblue"}}>
                 <div class="center-align nav-wrapper container">
                     <ul>
                         <li><a href="/">Home</a></li>
