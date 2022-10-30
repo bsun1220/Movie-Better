@@ -20,6 +20,12 @@ Router.get("/betmovieid/:id", async(req, res) => {
     res.send(movie);
 });
 
+
+Router.get("/betmovieid", async(req, res) => {
+    const movie = await BetMovie.find({});
+    res.send(movie);
+});
+
 Router.get("/betmovietitle/:title", async(req, res) => {
     const id = req.params.title;
     const movie = await BetMovie.find({"title":id});

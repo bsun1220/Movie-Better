@@ -1,0 +1,71 @@
+.login{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    margin:0px;
+    margin-top:40px
+}
+
+.login p{
+    margin:0px;
+    padding:0px;
+}
+
+
+input{
+    height:50px;
+    width:50px;
+    border-style:solid;
+    margin:0px;
+}
+
+form{
+    margin:0px;
+    padding:0px;
+}
+
+.moviecard{
+    border-style:solid;
+    background-color:white;
+    width:max(25vw, 200px);
+    min-height:30px;
+    display:flex;
+    padding:5px;
+    flex-direction:column;
+    margin:10px;
+    padding-bottom:20px;
+}
+
+.moviecard h1{
+    font-size:20px;
+}
+
+.moviecard hr{
+    background-color:lightblue;
+    height:1px;
+    width:75%;
+    border:none;
+    margin:0px;
+    margin-inline:auto;
+}
+
+.moviecard p{
+    margin-top:2px;
+    margin-inline:auto;
+    color:gray;
+    font-size:12px;
+    padding-inline:20px;
+}
+
+.movielist{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+
+}
+
+.bottomCard{
+    display:flex;
+    justify-content:end;
+    background-color:yellow;
+}

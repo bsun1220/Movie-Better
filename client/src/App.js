@@ -3,6 +3,7 @@ import { Route, Routes} from "react-router-dom";
 import DataVisPage from "./Components/DataVis/datavispage";
 import SearchPage from "./Pages/SearchPage";
 import HomePage from "./Components/Home/home";
+import BettingPage from "./Components/Betting/BettingPage";
 
 import "./Public/Styles/index.css"
 import "./Public/Styles/widget.css"
@@ -15,6 +16,7 @@ const App = () => {
                 <div class="center-align nav-wrapper container">
                     <ul>
                         <li><a href="/">Home</a></li>
+                        <li><a href="/betting">Betting</a></li>
                         <li><a href="/search">Encylopedia</a></li>
                         <li><a href="/datavis">DataVis</a></li>
                     </ul>
@@ -23,6 +25,7 @@ const App = () => {
 
             <Routes>
                 <Route exact path = "/" element = {<HomePage/>}/>
+                <Route exact path = "/betting" element = {<BettingPage/>} />
                 <Route exact path = "/search" element = {<SearchPage/>} />
                 <Route exact path = "/datavis" element = {<DataVisPage/>}/>
             </Routes>
