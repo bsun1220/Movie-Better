@@ -2,21 +2,11 @@ import React, {useState , useEffect} from "react";
 import MovieCard from "./card";
 import "./betting.css";
 import axios from "axios";
+import Login from "./Login";
 
 export default function BettingPage(){
-
-    const [login, setLogin] = useState(true);
-    const [buttonMessage, setMessage] = useState("login");
     const [movies, setMovies] = useState("");
-
-    useEffect(() => {
-        if (login){
-            setMessage("Log In");
-        }
-        else{
-            setMessage("Create");
-        }
-    }, [login]);
+    const [user, setUserData] = useState("");
 
     useEffect(() => {
         const func = async() =>{
@@ -25,17 +15,13 @@ export default function BettingPage(){
             const data = request.data;
             const list = []
             data.forEach((element) => {
-                const card = <MovieCard id = {Math.random()} data = {element}/>
+                const card = <MovieCard id = {element.nmid} data = {element} user = {user}/>
                 list.push(card);
             })
             setMovies(list);
         };
         func();
-    }, []);
-
-    const handleLoginButton = (e) =>{
-        setLogin(!login);
-    }
+    }, [user]);
 
     return(
         <div>
@@ -46,27 +32,7 @@ export default function BettingPage(){
                 </div>
                 <p style = {{"marginTop":"10px"}}>Platform</p>
             </div>
-            <div className = {"aboutpage"}>
-                <div style = {{"display":"flex", "alignItems":"center"}}>
-                    <h1 style = {{"marginLeft": "20px"}}>Login Information</h1>
-                </div>
-                <hr style = {{"width":"40vw"}}/>
-                <div className = {"login"}>
-                    <input type = {"text"}
-                            style = {{"width":"30vw"}}/>
-                    <label>Username</label>
-                    <input type = {"password"}
-                            style = {{"width":"30vw"}}/>
-                    <label>Password</label>
-                    <div style = {{"marginTop":"40px"}}>
-                        <button className = "custom-btn btn amber black-text" 
-                            onClick = {handleLoginButton}
-                            style = {{"width":"10vw", "marginRight":"20px"}}>
-                            {buttonMessage}</button>
-                        <button className = "custom-btn btn amber black-text" style = {{"width":"10vw"}}>Submit</button>
-                    </div>
-                </div>
-            </div>
+            <Login setUserData = {setUserData}/>
             <div className = "secondarypage">
                 <h1 style = {{"fontWeight":"600", "fontSize":"40px"}}>Betting</h1>
                 <p style = {{"marginTop":"10px", "marginBottom":"30px"}}>Pick a Movie</p>

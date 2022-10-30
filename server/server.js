@@ -23,6 +23,8 @@ app.use(require("./routes/famous"));
 app.use(require("./routes/crew"));
 app.use(require("./routes/info"));
 app.use(require("./routes/betmovie"));
+app.use(require("./routes/user"));
+app.use(require("./routes/bet"));
 
 mongoose.connect(uri,{
     useNewUrlParser: true,
