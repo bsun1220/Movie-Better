@@ -32,6 +32,10 @@ const UserSchema = new Schema({
     start:{
         type:Date,
         default:Date.now
+    }, 
+    balance:{
+        type:Number,
+        default:1000
     }
 });
 

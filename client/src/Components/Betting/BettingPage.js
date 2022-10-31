@@ -15,7 +15,7 @@ export default function BettingPage(){
             const data = request.data;
             const list = []
             data.forEach((element) => {
-                const card = <MovieCard id = {element.nmid} data = {element} user = {user}/>
+                const card = <MovieCard key = {element.nmid} data = {element} user = {user} setUserData = {setUserData}/>
                 list.push(card);
             })
             setMovies(list);

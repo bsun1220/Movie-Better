@@ -7,6 +7,18 @@ Router.get("/login", async(req, res) => {
     res.send(user);
 });
 
+Router.put("/balance", async(req, res) => {
+    const username = req.body.username;
+    const amount = req.body.amount;
+    User.find({username:username})
+        .exec((err, user) => {
+            if (err) return  res.status(400).send(err);
+            user[0].balance = user[0].balance - amount;
+            user[0].save();
+            return res.send("Success")
+        });
+});
+
 Router.get("/login/:name", async(req, res) => {
     const name = req.params.name;
     const user = await User.find({"username":name});

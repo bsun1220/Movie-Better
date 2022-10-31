@@ -28,18 +28,28 @@ form{
     border-style:solid;
     background-color:white;
     width:max(25vw, 200px);
-    min-height:30px;
+    min-height:20vh;
     display:flex;
     padding:5px;
     flex-direction:column;
     margin:10px;
-    padding-bottom:20px;
+    justify-content:space-between;
+}
+
+.top{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 }
 
 .moviecard h1{
     font-size:20px;
 }
 
+
+.moviecard form{
+    padding-inline:20px;
+}
 .moviecard hr{
     background-color:lightblue;
     height:1px;
@@ -64,8 +74,14 @@ form{
     padding-bottom:20px;
 }
 
-.bottomCard{
+.bottom{
     display:flex;
-    justify-content:end;
-    background-color:yellow;
+    align-items:center;
+    justify-content:space-between;
+    padding-inline:20px;
+}
+
+.bottom button{
+    min-height:40px;
+    min-width:40%;
 }

@@ -12,8 +12,8 @@ import "./Public/Styles/general.css"
 const App = () => {
     return (
         <div>
-            <nav class="nav-center z-depth-0" role="navigation" style = {{"backgroundColor":"aliceblue"}}>
-                <div class="center-align nav-wrapper container">
+            <nav className="nav-center z-depth-0" role="navigation" style = {{"backgroundColor":"aliceblue"}}>
+                <div className="center-align nav-wrapper container">
                     <ul>
                         <li><a href="/">Home</a></li>
                         <li><a href="/betting">Betting</a></li>
