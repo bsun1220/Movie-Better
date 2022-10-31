@@ -13,9 +13,10 @@ export default function MovieCard(props){
             setError(<p style = {{"marginTop":"10px","color":"red"} }>Not Logged In</p>)
             return;
         }
-        const rating_num = parseFloat(rating);
+        let rating_num = parseFloat(rating);
         let amount_num = parseFloat(amount);
 
+        rating_num = Math.round(rating_num * 10)/10;
         amount_num = Math.round(amount_num * 100)/100;
 
         if(isNaN(rating_num) || isNaN(amount_num)){
