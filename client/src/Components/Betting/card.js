@@ -7,28 +7,62 @@ export default function MovieCard(props){
     const [amount, setAmount] = useState("");
     const [error, setError] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault(); 
         if (props.user == ""){
             setError(<p style = {{"marginTop":"10px","color":"red"} }>Not Logged In</p>)
             return;
         }
         const rating_num = parseFloat(rating);
-        const amount_num = parseFloat(amount);
+        let amount_num = parseFloat(amount);
+
+        amount_num = Math.round(amount_num * 100)/100;
 
         if(isNaN(rating_num) || isNaN(amount_num)){
             setError(<p style = {{"marginTop":"10px","color":"red"} }>Invalid Input</p>)
             return; 
         }
 
-        if(rating_num < 0 || rating_num > 10 || amount_num < 0){
+        if(rating_num < 0 || rating_num > 10 || amount_num <= 0){
             setError(<p style = {{"marginTop":"10px","color":"red"} }>Invalid Input</p>)
             return; 
         }
+        if(props.user.balance < amount){
+            setError(<p style = {{"marginTop":"10px","color":"red"} }>Not Enough Money</p>)
+            return; 
+        }
+        const check_url = "http://localhost:5001/getbet/" + props.user.uid + "/" + props.data.nmid + "/" + rating;
+        const check = await axios.get(check_url);
+        const check_data = check.data;
 
-
-
+        if (check_data.length !== 0){
+            setError(<p style = {{"marginTop":"10px","color":"red"} }>Already Bet on Rating. Edit Size in My Accounts</p>)
+            return; 
+        }
         
+        const req_body = {
+            "uid":props.user.uid,
+            "nmid":props.data.nmid,
+            "amount":amount,
+            "rating":rating
+        };
+        await axios.put("http://localhost:5001/setbet", req_body);
+
+
+        const body = {
+            "username":props.user.username,
+            "amount":amount
+        }
+        await axios.put("http://localhost:5001/balance", body);
+
+        const url = "http://localhost:5001/login/" + props.user.username;
+        const request = await axios.get(url);
+        const data = request.data[0];
+
+        setError(<p style = {{"marginTop":"10px","color":"green"} }>
+            You successfully put ${amount_num} on {rating_num}
+        </p>);
+        props.setUserData(data);
 
     }
 
