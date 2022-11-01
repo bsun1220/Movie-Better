@@ -8,12 +8,11 @@ export default function AccountPage(){
     const [edit, setEdit] = useState("");
 
     const [login, setLogin] = useState(<Login setUserData = {setUserData}/>);
-    console.log(user);
     useEffect(() => {
         if(user == ""){
             return;
         }
-        setEdit(<EditAccount setUserData = {setUserData} user = {user}/>)
+        setEdit(<EditAccount id = {Math.random()} setUserData = {setUserData} user = {user} old_user = {user.username}/>)
         setLogin("");
 
     }, [user]);

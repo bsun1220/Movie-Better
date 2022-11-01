@@ -10,8 +10,6 @@ export default function EditAccount(props){
         "lastname":props.user.lastname
     });
 
-    const [old_user] = useState(props.user.username);
-
     const num_list = [0,1,2,3,4,5,6,7,8,9];
 
     const [error, setError] = useState("");
@@ -89,7 +87,7 @@ export default function EditAccount(props){
 
         const url = "http://localhost:5001/login/" + username;
         const req = await axios.get(url);
-        if (req.data.length != 0 && old_user !== username){
+        if (req.data.length != 0 && props.old_user !== username){
             props.setUserData("");
             setError(<p style = {{"marginTop":"20px", "color":"red"}}>Username taken</p>)
             return; 
@@ -97,7 +95,7 @@ export default function EditAccount(props){
 
         const change_url = "http://localhost:5001/accountedit";
         const body = {
-            "old_username":old_user,
+            "old_username":props.old_user,
             "username":username,
             "password":password,
             "first":firstname,
@@ -108,7 +106,6 @@ export default function EditAccount(props){
         const new_url = "http://localhost:5001/login/" + username + "/" + password;
         const request = await axios.get(new_url);
         const data = request.data;
-        console.log(data)
         props.setUserData(data[0]);
 
         setError(<p style = {{"marginTop":"20px", "color":"green"}}>Account Information Edited!</p>)
