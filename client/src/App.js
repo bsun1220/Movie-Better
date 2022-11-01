@@ -4,6 +4,7 @@ import DataVisPage from "./Components/DataVis/datavispage";
 import SearchPage from "./Pages/SearchPage";
 import HomePage from "./Components/Home/home";
 import BettingPage from "./Components/Betting/BettingPage";
+import AccountPage from "./Components/Accounts/AccountPage";
 
 import "./Public/Styles/index.css"
 import "./Public/Styles/widget.css"
@@ -19,6 +20,7 @@ const App = () => {
                         <li><a href="/betting">Betting</a></li>
                         <li><a href="/search">Encylopedia</a></li>
                         <li><a href="/datavis">DataVis</a></li>
+                        <li><a href="/accounts">Accounts</a></li>
                     </ul>
                 </div>
             </nav>
@@ -28,6 +30,7 @@ const App = () => {
                 <Route exact path = "/betting" element = {<BettingPage/>} />
                 <Route exact path = "/search" element = {<SearchPage/>} />
                 <Route exact path = "/datavis" element = {<DataVisPage/>}/>
+                <Route exact path = "/accounts" element = {<AccountPage/>}/>
             </Routes>
         </div>
     );

@@ -19,6 +19,25 @@ Router.put("/balance", async(req, res) => {
         });
 });
 
+Router.put("/accountedit", async(req, res) => {
+    const username = req.body.old_username;
+    const new_user = req.body.username;
+    const password = req.body.password;
+    const first = req.body.first;
+    const last = req.body.last; 
+
+    User.find({username:username})
+        .exec((err, user) => {
+            if (err) return  res.status(400).send(err);
+            user[0].username = new_user;
+            user[0].password = password;
+            user[0].firstname = first;
+            user[0].lastname = last;
+            user[0].save();
+            return res.send("Success")
+        });
+});
+
 Router.get("/login/:name", async(req, res) => {
     const name = req.params.name;
     const user = await User.find({"username":name});
