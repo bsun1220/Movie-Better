@@ -33,7 +33,9 @@ Router.get("/crew/:name", async(req,res)=>{
         const tid = data["tid"];
         const request = await Movie.find({tid:tid});
         const element = request[0];
-        movie_list.push(element);
+        if (element !== undefined){
+            movie_list.push(element);
+        }
     }
 
     if(movie_list.length === 0){
