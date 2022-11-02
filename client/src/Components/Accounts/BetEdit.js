@@ -30,7 +30,7 @@ export default function BetEdit(props){
             setError(<p style = {{"color":"red"}}>Invalid Input</p>)
             return;
         }
-        if(val <= 0){
+        if(val < 0.01){
             setError(<p style = {{"color":"red"}}>Invalid Input</p>)
             return;
         }
