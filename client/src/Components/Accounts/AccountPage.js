@@ -2,18 +2,31 @@ import "./accounts.css";
 import React, {useState, useEffect} from "react"
 import Login from "../Betting/Login";
 import EditAccount from "./EditAccount";
+import VisualPage from "./Visual";
+import axios from "axios";
 
 export default function AccountPage(){
     const [user, setUserData] = useState("");
     const [edit, setEdit] = useState("");
+    const [visual, setVisual] = useState("");
 
     const [login, setLogin] = useState(<Login setUserData = {setUserData}/>);
     useEffect(() => {
-        if(user == ""){
-            return;
+
+        const func = async() => {
+            if(user === ""){
+                return;
+            }
+
+            const url = "http://localhost:5001/getbetuid/" + user.uid;
+            const request = await axios.get(url);
+            const data = request.data;
+
+            setEdit(<EditAccount id = {Math.random()} setUserData = {setUserData} user = {user} old_user = {user.username}/>)
+            setVisual(<VisualPage user = {user} bets = {data} setUserData = {setUserData}/>)
+            setLogin("");
         }
-        setEdit(<EditAccount id = {Math.random()} setUserData = {setUserData} user = {user} old_user = {user.username}/>)
-        setLogin("");
+        func();
 
     }, [user]);
 
@@ -28,6 +41,7 @@ export default function AccountPage(){
             </div>
             {login}
             {edit}
+            {visual}
         </div>
     )
 }

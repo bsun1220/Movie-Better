@@ -87,7 +87,7 @@ export default function EditAccount(props){
 
         const url = "http://localhost:5001/login/" + username;
         const req = await axios.get(url);
-        if (req.data.length != 0 && props.old_user !== username){
+        if (req.data.length !== 0 && props.old_user !== username){
             props.setUserData("");
             setError(<p style = {{"marginTop":"20px", "color":"red"}}>Username taken</p>)
             return; 
