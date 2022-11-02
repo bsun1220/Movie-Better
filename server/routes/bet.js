@@ -39,19 +39,15 @@ Router.put("/editbet/:uid/:nmid/:rating/:amount", async(req, res) => {
     const nmid = req.params.nmid;
     const rating = parseFloat(req.params.rating);
     const amount = parseFloat(req.params.amount);
-    Bet.find({"uid":uid, "nmid":nmid, "rating":rating})
-       .exec((err, bet) => {
-            if (err) return res.status(400).send(err);
-            bet[0].amount += amount;
-            bet[0].save();
-       })
-    User.find({"uid":uid})
-        .exec((err, user) => {
-            if(err) return res.status(400).send(err);
-            user[0].balance -= amount;
-            user[0].save();
-        })
-    res.send("success");
+
+    const bet = await Bet.find({"uid":uid, "nmid":nmid, "rating":rating})
+    bet[0].amount += amount;
+    await bet[0].save();
+
+    const user = await User.find({"uid":uid});
+    user[0].balance -= amount;
+    await user[0].save();
+    res.send(user)[0];
 });
 
 module.exports = Router;

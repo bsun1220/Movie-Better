@@ -35,7 +35,6 @@ export default function BetEdit(props){
             return;
         }
         const amount = Math.round(val * 100)/100;
-        console.log(props.user.balance);
         if(props.user.balance < amount){
             setError(<p style = {{"color":"red"}}>Not Enough Money</p>)
             return;
@@ -50,8 +49,8 @@ export default function BetEdit(props){
         const data = request.data;
 
         props.setUserData(data[0]);
-        props.setChange(! props.change);
         setError(<p style = {{"color":"green"}}>Bet Adjusted!</p>)
+        setInput("");
 
     }
 

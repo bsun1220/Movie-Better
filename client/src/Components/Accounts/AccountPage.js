@@ -21,7 +21,6 @@ export default function AccountPage(){
             const url = "http://localhost:5001/getbetuid/" + user.uid;
             const request = await axios.get(url);
             const data = request.data;
-
             setEdit(<EditAccount id = {Math.random()} setUserData = {setUserData} user = {user} old_user = {user.username}/>)
             setVisual(<VisualPage user = {user} bets = {data} setUserData = {setUserData}/>)
             setLogin("");

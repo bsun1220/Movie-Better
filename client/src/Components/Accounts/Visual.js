@@ -5,7 +5,6 @@ import BetEdit from "./BetEdit";
 export default function VisualPage(props){
     const [betlist, setBetList] = useState("")
 
-    const [change, setChange] = useState(true);
 
     useEffect(() => {
         let i = 1;
@@ -13,13 +12,11 @@ export default function VisualPage(props){
         props.bets.forEach((data) => {
             list.push(<BetEdit key = {i} data = {data} 
                 index = {i} user = {props.user} 
-                change = {change}
-                setChange = {setChange}
                 setUserData = {props.setUserData}/>)
             i+=1; 
         });
         setBetList(list);
-    }, [props.bets, props.user, props.setUserData, props.setChange, change]);
+    }, [props.bets, props.user, props.setUserData]);
 
     return(
         <div className = {"vis"}>
