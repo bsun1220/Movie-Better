@@ -22,6 +22,12 @@ Router.get("/getbetuid/:uid", async(req, res) => {
     res.send(amount);
 });
 
+Router.get("/getbetnmid/:nmid", async(req, res) => {
+    const nmid = req.params.nmid;
+    const amount = await Bet.find({"nmid":nmid});
+    res.send(amount);
+});
+
 
 Router.put("/setbet", async(req, res) => {
     const amount = new Bet(req.body);

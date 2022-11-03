@@ -9,7 +9,7 @@ export default function MovieCard(props){
 
     const handleSubmit = async(e) => {
         e.preventDefault(); 
-        if (props.user == ""){
+        if (props.user === ""){
             setError(<p style = {{"marginTop":"10px","color":"red"} }>Not Logged In</p>)
             return;
         }
