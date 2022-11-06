@@ -3,6 +3,7 @@ import React, {useState, useEffect} from "react"
 import Login from "../Betting/Login";
 import EditAccount from "./EditAccount";
 import VisualPage from "./Visual";
+import LookUp from "./lookup";
 import axios from "axios";
 
 export default function AccountPage(){
@@ -41,6 +42,7 @@ export default function AccountPage(){
             {login}
             {edit}
             {visual}
+            <LookUp/>
         </div>
     )
 }
