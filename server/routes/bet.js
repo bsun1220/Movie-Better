@@ -28,6 +28,36 @@ Router.get("/getbetnmid/:nmid", async(req, res) => {
     res.send(amount);
 });
 
+Router.get("/leaderboard1", async(req, res) => {
+    const bets = await Bet.find({}).sort({"amount":-1}).limit(5);
+
+    const bet_size = []
+    bets.forEach(bet => {
+        bet_size.push([bet["uid"], bet["amount"]]);
+    });
+    for (let i = 0; i < bet_size.length; i++){
+        const data = await User.find({"uid":bet_size[i][0]});
+        const name = data[0]["username"]
+        bet_size[i][0] = name
+    }
+    res.send(bet_size);
+});
+
+Router.get("/leaderboard2", async(req, res) => {
+    const users = await User.find({})
+    const data = []
+
+    for (let i = 0; i < users.length; i++){
+        const bets = await Bet.find({"uid":users[i]["uid"]})
+        const size = bets.length;
+        data.push([users[i]["username"], size])
+    }
+
+    let sorted_data = data.sort(function(a, b){return - a[1] + b[1];})
+    sorted_data = sorted_data.slice(0, 5);
+    res.send(sorted_data);
+
+});
 
 Router.put("/setbet", async(req, res) => {
     const amount = new Bet(req.body);

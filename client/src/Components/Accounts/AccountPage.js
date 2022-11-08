@@ -4,6 +4,7 @@ import Login from "../Betting/Login";
 import EditAccount from "./EditAccount";
 import VisualPage from "./Visual";
 import LookUp from "./lookup";
+import LeaderBoard from "./leaderboard";
 import axios from "axios";
 
 export default function AccountPage(){
@@ -43,6 +44,7 @@ export default function AccountPage(){
             {edit}
             {visual}
             <LookUp/>
+            <LeaderBoard/>
         </div>
     )
 }
