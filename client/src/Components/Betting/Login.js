@@ -14,6 +14,9 @@ export default function Login(props){
 
     const [errorMessage, setErrorMessage] = useState("");
 
+    const [ref, setRef] = useState("");
+    const [mess, setMess] = useState("");
+
     useEffect(() => {
         if (!login){
             setMessage("Log In");
@@ -35,7 +38,7 @@ export default function Login(props){
             const url = "http://localhost:5001/login/" + userName + "/" + password;
             const request = await axios.get(url);
             const data = request.data;
-            if(data.length == 0){
+            if(data.length === 0){
                 props.setUserData("");
                 setErrorMessage(<p style = {{"color":"red"}}>Wrong Username / Password</p>)
                 return;
@@ -78,7 +81,7 @@ export default function Login(props){
 
             const url = "http://localhost:5001/login/" + userName;
             const req = await axios.get(url);
-            if (req.data.length != 0){
+            if (req.data.length !== 0){
                 props.setUserData("");
                 setErrorMessage(<p style = {{"color":"red"}}>Username taken</p>)
                 return; 
@@ -109,6 +112,19 @@ export default function Login(props){
         changePassword(e.target.value);
     }
 
+    const inputChange3 = (e) => {
+        e.preventDefault(); 
+        setRef(e.target.value);
+    }
+
+    const handleEnter = async(e) => {
+        if (e.key === "Enter" && ref === "MB2022"){
+            const url = "http://localhost:5001/turnoff";
+            await axios.put(url, {"username":userName});
+            setMess("(Submitted)")
+        }
+    }
+
     return (
         <div className = {"aboutpage"}>
                 <div style = {{"display":"flex", "alignItems":"center"}}>
@@ -136,6 +152,13 @@ export default function Login(props){
                         style = {{"minWidth":"10vw"}}>Submit</button>
                     </div>
                     {errorMessage}
+                    <input type = {"text"}
+                            onChange = {inputChange3}
+                            onKeyDown = {handleEnter}
+                            value = {ref}
+                            placeholder = "Enter Code"
+                            style = {{"width":"20vw", "marginTop":"40px"}}/>
+                    <label>Referral Code {mess}</label>
                 </div>
             </div>
     )

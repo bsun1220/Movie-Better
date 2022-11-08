@@ -36,6 +36,10 @@ const UserSchema = new Schema({
     balance:{
         type:Number,
         default:1000
+    },
+    usedRef:{
+        type:Boolean,
+        default: false
     }
 });
 

@@ -38,6 +38,26 @@ Router.put("/accountedit", async(req, res) => {
         });
 });
 
+Router.put("/turnoff", async(req, res) => {
+    const username = req.body.username;
+    const users = await User.find({username:username});
+
+    if (users.length !== 1){
+        res.send("Not Found");
+        return;
+    }
+
+    if (!users[0].usedRef){
+        users[0].balance += 500;
+        users[0].usedRef = true;
+        await users[0].save();
+        res.send("Success");
+        return;
+    }
+    return res.send("Yes");
+
+});
+
 Router.get("/login/:name", async(req, res) => {
     const name = req.params.name;
     const user = await User.find({"username":name});
