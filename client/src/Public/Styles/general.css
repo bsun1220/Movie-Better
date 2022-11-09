@@ -105,6 +105,13 @@ textarea{
     font-family:monospace;
 }
 
+.aboutpage textarea{
+    max-width:max(40%, 300px);
+    min-width:max(40%, 300px);
+    min-height:20px;
+    max-height:50px;
+}
+
 button{
     background-color:gold;
     font-size:large;

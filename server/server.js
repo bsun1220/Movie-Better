@@ -24,7 +24,7 @@ app.use(require("./routes/crew"));
 app.use(require("./routes/info"));
 app.use(require("./routes/betmovie"));
 app.use(require("./routes/user"));
-app.use(require("./routes/bet"));
+app.use(require("./routes/comment"));
 
 mongoose.connect(uri,{
     useNewUrlParser: true,

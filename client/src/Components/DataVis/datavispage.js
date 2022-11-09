@@ -1,7 +1,21 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import StartEntry from "./startentry";
+import CommentSection from "./comment";
+import Login from "../Betting/Login";
 
 export default function DataVisPage(){
+
+    const [user, setUserData] = useState("");
+    const [page, setPage] = useState(<Login setUserData = {setUserData}/>)
+
+
+    useEffect(() => {
+        if(user === ""){
+            return;
+        }
+        setPage(<CommentSection data = {user}/>)
+
+    }, [user, setPage]);
 
     return(<div>
         <div className = {"frontpage"}>
@@ -16,7 +30,7 @@ export default function DataVisPage(){
                 <img src = "questionmark.svg" height = "40px"/>
                 <h1 style = {{"marginLeft": "20px"}}>How To Use</h1>
             </div>
-            <hr/>
+            <hr style = {{"width":"50%"}}/>
             <p> The main purpose of DataVis is to allow potential bettors to 
                 research quantitative trends behind movies they are hoping to predict values for. Through careful analysis, from
                 examining past genre time series analysis, director rating, and actor rating, DataVis ensures that users are able
@@ -36,7 +50,7 @@ export default function DataVisPage(){
             </p>
         </div>
         <StartEntry/>
-
+        {page}
 
     </div>)
 }
