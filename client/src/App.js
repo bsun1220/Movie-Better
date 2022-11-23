@@ -18,7 +18,7 @@ const App = () => {
                     <ul>
                         <li><a href="/">Home</a></li>
                         <li><a href="/betting">Betting</a></li>
-                        <li><a href="/search">Encylopedia</a></li>
+                        <li><a href="/search">Encyclopedia</a></li>
                         <li><a href="/datavis">DataVis</a></li>
                         <li><a href="/accounts">Accounts</a></li>
                     </ul>

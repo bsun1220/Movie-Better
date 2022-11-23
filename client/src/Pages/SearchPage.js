@@ -11,7 +11,7 @@ export default function SearchPage(){
         <div className = {"frontpage"}>
             <div style = {{"display":"flex", "alignItems":"center"}}>
                 <img src =  "movie.svg" height = "100px"/>
-                <h1 style = {{"marginLeft": "20px"}}>Encylopedia</h1>
+                <h1 style = {{"marginLeft": "20px"}}>Encyclopedia</h1>
             </div>
             <p style = {{"marginTop":"10px"}}>Analysis</p>
         </div>
@@ -22,7 +22,7 @@ export default function SearchPage(){
             </div>
             <hr/>
             <p> Whereas DataVis allows people to research future released movies to conduct analysis on whether they want to bet on a certain 
-                rating or not based on genre, director, and analysis, Encylopedia focuses on allowing users to research past movies through 
+                rating or not based on genre, director, and analysis, Encyclopedia focuses on allowing users to research past movies through 
                 accessing various different metrics from rating to genre to length to year released. 
             </p>
             <p> From these various queries, users can look at the list of movies from our database of 20,000 movies taken from IMDB. All the user needs
