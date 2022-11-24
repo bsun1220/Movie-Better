@@ -6,14 +6,16 @@ export default function CommentSection(prop){
 
     const [content, setContent] = useState("");
     const [comments, setComments] = useState("");
+    const [likes, setLikes] = useState(0);
 
     const handleChange = (e) => {
         setContent(e.target.value);
+        setLikes(0);
     }
     const handleEnter = async(e) => {
         const val = content.replace(/\s/g, '');
         if(val !== "" && content.length > 20){
-            const req = {"username":prop.data.username, "content":content};
+            const req = {"username":prop.data.username, "content":content, "likes": likes};
             const url = ("http://localhost:5001/comment");
             await axios.put(url, req);
 
@@ -21,7 +23,7 @@ export default function CommentSection(prop){
             const data = request.data;
             const list = []
             data.forEach((element) => {
-                const node = <CommentCard key = {element.username} data = {element}/>
+                const node = <CommentCard key = {element.username} data = {element} likes={likes}/>
                 list.push(node)
             });
             setComments(list);
@@ -35,7 +37,7 @@ export default function CommentSection(prop){
             const data = request.data;
             const list = []
             data.forEach((element) => {
-                const node = <CommentCard key = {element.username} data = {element}/>
+                const node = <CommentCard key = {element.username} data = {element} likes={likes}/>
                 list.push(node)
             });
             setComments(list);
