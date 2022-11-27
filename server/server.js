@@ -14,6 +14,7 @@ const port = process.env.PORT || 5001;
 const uri = "mongodb+srv://bennysun:Password@cluster0.0ahdwtf.mongodb.net";
 
 
+
 require("dotenv").config({ path: "./config.env" });
 app.use(cors());
 app.use(express.json());
