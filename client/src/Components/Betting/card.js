@@ -63,6 +63,8 @@ export default function MovieCard(props){
         setError(<p style = {{"marginTop":"10px","color":"green"} }>
             You successfully put ${amount_num} on {rating_num}
         </p>);
+
+        localStorage.setItem("user", JSON.stringify(data))
         props.setUserData(data);
 
     }

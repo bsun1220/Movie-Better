@@ -7,6 +7,8 @@ export default function CommentSection(prop){
     const [content, setContent] = useState("");
     const [comments, setComments] = useState("");
     const [likes, setLikes] = useState(0);
+    const [errorMessage, setErrorMessage] = useState("");
+    const [user2, setUserData] = useState( JSON.parse(localStorage.getItem("user")));
 
     const handleChange = (e) => {
         setContent(e.target.value);
@@ -14,8 +16,16 @@ export default function CommentSection(prop){
     }
     const handleEnter = async(e) => {
         const val = content.replace(/\s/g, '');
-        if(val !== "" && content.length > 20){
+        if(!user2){
+            setErrorMessage(<p style = {{"color":"red"}}>Login to leave a comment</p>)
+        } 
+        else if(content.length<=10){
+            setErrorMessage(<p style = {{"color":"red"}}>Comment must be greater than 10 characters</p>)
+        } else{
+            setErrorMessage("")
+        if(val !== "" && content.length > 10){
             const req = {"username":prop.data.username, "content":content, "likes": likes};
+            console.log(req)
             const url = ("http://localhost:5001/comment");
             await axios.put(url, req);
 
@@ -29,7 +39,9 @@ export default function CommentSection(prop){
             setComments(list);
         }
     }
+    }
 
+    
     useEffect(() => {
         const func = async() => {
             const url = ("http://localhost:5001/comment");
@@ -48,6 +60,7 @@ export default function CommentSection(prop){
     return(
         <div className = {"aboutpage"}>
             <h1 style = {{"fontWeight":"600", "fontSize":"40px"}}>Comment Section</h1>
+            {errorMessage}
             <p style = {{"marginTop":"5px"}}>Submit your comment</p>
             <textarea type = "text" 
                 onChange = {handleChange}

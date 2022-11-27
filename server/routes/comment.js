@@ -24,7 +24,6 @@ Router.put("/editlikes/:username/:content", async(req, res) => {
     const username = req.params.username;
     const content = req.params.content;
     const com = await Comment.findOneAndUpdate({"username":username, "content":content},{ $inc: { "likes" : 1} })
-    console.log("hi")
     await com.save();
     res.send(com);
 });
@@ -32,7 +31,6 @@ Router.put("/editdislikes/:username/:content", async(req, res) => {
     const username = req.params.username;
     const content = req.params.content;
     const com = await Comment.findOneAndUpdate({"username":username, "content":content},{ $inc: { "likes" : -1} })
-    console.log(com)
     await com.save();
 
  

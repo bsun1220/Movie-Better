@@ -29,7 +29,7 @@ export default function LookUp(){
 
     return(
         <div className = "lookup">
-            <h1 style = {{"fontSize":"40px"}}>User Lookup</h1>
+            <h1 style = {{"fontSize":"40px"}}>Bettor Lookup</h1>
             <p>Search Up a Username</p>
             <input type = "text" style = {{"width":"20%", "color":"white"}} 
                     onChange = {handleChange}

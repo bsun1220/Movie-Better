@@ -17,6 +17,10 @@ export default function Login(props){
     const [ref, setRef] = useState("");
     const [mess, setMess] = useState("");
 
+    //new
+    const [user, setUser] = useState();
+
+
     useEffect(() => {
         if (!login){
             setMessage("Log In");
@@ -98,6 +102,14 @@ export default function Login(props){
         const request = await axios.get(url);
         const data = request.data;
         props.setUserData(data[0]);
+
+        
+        // set the state of the user
+        setUser(data[0]);
+        // store the user in localStorage
+        localStorage.setItem("user", JSON.stringify(data[0]));
+
+
         setErrorMessage(<p style = {{"color":"green"}}>Signed In!</p>);
 
     }

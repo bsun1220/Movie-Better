@@ -37,6 +37,7 @@ Router.get("/leaderboard1", async(req, res) => {
     });
     for (let i = 0; i < bet_size.length; i++){
         const data = await User.find({"uid":bet_size[i][0]});
+        console.log(data)
         const name = data[0]["username"]
         bet_size[i][0] = name
     }

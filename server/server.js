@@ -3,6 +3,10 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
+// //new
+// const passport = require("passport");
+// const newusers = require("./routes/newusers");
+
 require("dotenv").config({ path: "./config.env" });
 
 const mongoose = require("mongoose");
@@ -32,6 +36,15 @@ mongoose.connect(uri,{
     useUnifiedTopology:true
   });
   
+
+// //new
+// // Passport middleware
+// app.use(passport.initialize());
+// // Passport config
+// require("./config/passport")(passport);
+// // Routes
+// app.use("/api/newusers", newusers);
+
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error: "));
 db.once("open", function () {

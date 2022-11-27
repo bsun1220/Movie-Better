@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom";
 
 export default function HomePage(){
     return(<div>
@@ -8,6 +9,18 @@ export default function HomePage(){
                 <h1 style = {{"marginLeft": "20px"}}>Movie Better</h1>
             </div>
             <p style = {{"marginTop":"10px"}}>IMDB</p>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+
+            <Link
+                to="/register"
+                className="custom-btn btn white black-text" 
+              >
+                Start Betting!
+              </Link>
+
         </div>
         <div className = {"aboutpage"}>
             <div style = {{"display":"flex", "alignItems":"center"}}>

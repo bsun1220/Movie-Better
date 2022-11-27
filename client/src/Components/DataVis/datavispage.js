@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from "react";
 import StartEntry from "./startentry";
 import CommentSection from "./comment";
-import Login from "../Betting/Login";
+import Login from "../Betting/OldLogin";
 
 export default function DataVisPage(){
 
-    const [user, setUserData] = useState("");
-    const [page, setPage] = useState(<Login setUserData = {setUserData}/>)
+    const [user, setUserData] = useState( JSON.parse(localStorage.getItem("user")));
+    const [page, setPage] = useState();
 
 
     useEffect(() => {

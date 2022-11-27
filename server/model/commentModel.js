@@ -15,7 +15,7 @@ const CommentSchema = new Schema({
     likes:{
         type:Number,
         maxlength:500,
-        required:true
+        // required:true
     },
     Date:{
         type:Date,

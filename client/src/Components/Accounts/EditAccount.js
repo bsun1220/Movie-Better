@@ -108,6 +108,8 @@ export default function EditAccount(props){
         const data = request.data;
         props.setUserData(data[0]);
 
+        localStorage.setItem("user", JSON.stringify(data[0]))
+
         setError(<p style = {{"marginTop":"20px", "color":"green"}}>Account Information Edited!</p>)
     }
 
