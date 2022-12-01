@@ -29,8 +29,13 @@ export default function AccountPage(){
             const data = request.data;
             // setEdit(<EditAccount id = {Math.random()} setUserData = {setUserData} user = {user} old_user = {user.username}/>)
             // setVisual(<VisualPage user = {user} bets = {data} setUserData = {setUserData}/>)
-
-            setEdit(<EditAccount id = {Math.random()} user = {user} setUserData = {setUserData} old_user = {user.username}/>)
+            const url2 = "http://localhost:5001/gettemp/" + user.uid;
+            const request2 = await axios.get(url2);
+            const temp = request2.data;
+            console.log("hereiam")
+            console.log(temp)
+            
+            setEdit(<EditAccount id = {Math.random()} user = {user} setUserData = {setUserData} old_user = {user.username} pw = {temp} />)
             setVisual(<VisualPage user = {user} setUserData = {setUserData} bets = {data} />)
             // setLogin("");
         }

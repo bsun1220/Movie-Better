@@ -25,7 +25,7 @@ function App  () {
 
     if(!user){
         return(
-            <Link to="/login" className="custom-btn btn amber black-text">
+            <Link to="/register" className="custom-btn btn amber black-text">
                         Login/Register </Link>
         )
     }

@@ -1,11 +1,12 @@
 import React, {useState} from "react";
 import axios from "axios";
 
+
 export default function EditAccount(props){
 
     const [account, setAccount] = useState({
         "username":props.user.username,
-        "password":props.user.password,
+        "password":props.pw,
         "firstname":props.user.firstname,
         "lastname":props.user.lastname
     });

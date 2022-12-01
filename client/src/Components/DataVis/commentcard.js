@@ -28,11 +28,19 @@ export default function CommentCard(prop){
 
   }
 
+
   // useEffect(() => {
   //   localStorage.setItem('likes'+comID, String(likes));
   // }, [likes]);
 
-    return(<div class="row">
+
+  // console.log("this is it new run");
+  // console.log(prop.data.content)
+  // console.log(likes);
+  // console.log(prop.data.likes)
+
+    return( 
+    <div class="row">
     <div class="col s12 m6">
       <div class="card blue-grey darken-1">
         <LikeContext.Provider value={likes}>

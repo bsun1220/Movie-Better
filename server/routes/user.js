@@ -2,6 +2,11 @@ const express = require("express");
 const Router = express.Router();
 const User = require("../model/userModel");
 
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+
+export var temps = {};
+
 Router.get("/login", async(req, res) => {
     const user = await User.find({});
     res.send(user);
@@ -26,11 +31,16 @@ Router.put("/accountedit", async(req, res) => {
     const first = req.body.first;
     const last = req.body.last; 
 
+    const hashed = bcrypt.hashSync(password, saltRounds)
+    console.log(password)
+    console.log(hashed)
+
+
     User.find({username:username})
         .exec((err, user) => {
             if (err) return  res.status(400).send(err);
             user[0].username = new_user;
-            user[0].password = password;
+            user[0].password = hashed;
             user[0].firstname = first;
             user[0].lastname = last;
             user[0].save();
@@ -60,6 +70,8 @@ Router.put("/turnoff", async(req, res) => {
 
 Router.get("/login/:name", async(req, res) => {
     const name = req.params.name;
+    // console.log("connected")
+    // console.log(name)
     const user = await User.find({"username":name});
     res.send(user);
 });
@@ -67,28 +79,81 @@ Router.get("/login/:name", async(req, res) => {
 Router.get("/login/:name/:password", async(req, res) => {
     const name = req.params.name;
     const password = req.params.password;
-    const user = await User.find({"username":name, "password":password});
-    res.send(user);
+
+    //get uid
+    var myUIDS = new Array()
+    const uid = await User.find({"username":name},{"uid":1});
+    const arrUID =  Array.from(uid).forEach(function(myDoc1){myUIDS.push(myDoc1.uid)})
+    const myUID= myUIDS[0]
+
+    temps[myUID]= password
+
+    // console.log(temps)
+    var myHashes = new Array()
+
+    const hash = await User.find({"username":name},{"password":1});
+    const arrID =  Array.from(hash).forEach(function(myDoc){myHashes.push(myDoc.password)})
+    const myHash= myHashes[0]
+
+    console.log(myHash)
+    console.log(password)
+
+    let answer = bcrypt.compareSync(password, myHash)
+        if (answer) {
+          console.log("It matches!")
+          const user = await User.find({"username":name, "password":myHash});
+          res.send(user);
+        }
+        else {
+          console.log("Invalid password!");
+          const user = await User.find({"username":name, "password":password});
+          res.send(user);
+        }
+  
+    
 });
 
 Router.put("/loginbet", async (req, res) => {
     const {username , password} = req.body;
     const count = await User.countDocuments({}).exec();
     const uid = "uid" + count;
+    temps[uid]= password
+    // console.log(temps)
+
+    //new
+
+    const hashed = bcrypt.hashSync(password, saltRounds)
+
     const object = {
         "username":username,
-        "password":password,
+        "password":hashed,
         "uid":uid
     };
 
+    // console.log(hashed)
+    // console.log(password)
+
     const user = new User(object);
-    try {
-        await user.save();
-        res.send("Success");
-    }
-    catch(error){
-        res.status(500).send(error);
-    }
+            try {
+                await user.save();
+                res.send("Success");
+            }
+            catch(error){
+                res.status(500).send(error);
+            }
+
+
+
+  
+});
+
+Router.get("/gettemp/:uid", async(req, res) => {
+    const uid = req.params.uid;
+    console.log(uid)
+    let answer = temps[uid]
+    console.log(temps)
+    res.send(answer);
 });
 
 module.exports = Router;
+// module.exports= temps;

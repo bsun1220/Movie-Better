@@ -46,8 +46,10 @@ export default function NewLogin(props){
         const url = "http://localhost:5001/login/" + userName + "/" + password;
         const request = await axios.get(url);
         const data = request.data;
+        console.group("the data entered")
+        console.log(data)
         if(data.length === 0){
-            props.setUserData("");
+            setUser("");
             setErrorMessage(<p style = {{"color":"red"}}>Wrong Username / Password</p>)
             return;
         }
