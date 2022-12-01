@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import EditAccount from "./EditAccount";
 import VisualPage from "./Visual";
 import axios from "axios";
+import Logout from "../NewLogin/Logout";
 
 export default function AccountPage(){
     const [edit, setEdit] = useState("");

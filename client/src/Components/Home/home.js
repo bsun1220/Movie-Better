@@ -10,9 +10,6 @@ export default function HomePage(){
             </div>
             <p style = {{"marginTop":"10px"}}>IMDB</p>
             <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
 
             <Link
                 to="/register"

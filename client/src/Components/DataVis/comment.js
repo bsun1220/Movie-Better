@@ -25,7 +25,6 @@ export default function CommentSection(prop){
             setErrorMessage("")
         if(val !== "" && content.length > 10){
             const req = {"username":prop.data.username, "content":content, "likes": likes};
-            console.log(req)
             const url = ("http://localhost:5001/comment");
             await axios.put(url, req);
 
@@ -67,6 +66,7 @@ export default function CommentSection(prop){
                 value = {content}
                 placeholder = "min 20 characters"
                 style = {{"width":"20%"}}/>
+        <br></br>
             <button className = "custom-btn btn amber black-text" onClick = {handleEnter}>Submit</button>
             {comments}
         </div>

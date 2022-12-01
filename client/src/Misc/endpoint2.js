@@ -1,7 +1,7 @@
 import './widget.css';
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import MovieInfoCard from './Components/InfoCards/MovieInfoCard';
+import MovieInfoCard from '../Components/InfoCards/MovieInfoCard';
 
 export default function EndPointTwo(){
 

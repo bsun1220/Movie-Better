@@ -2,6 +2,7 @@ import React, {useContext, useState} from "react";
 import { Route, Routes} from "react-router-dom";
 import DataVisPage from "./Components/DataVis/datavispage";
 import SearchPage from "./Pages/SearchPage";
+import SearchPage2 from "./Pages/SearchPage2";
 import HomePage from "./Components/Home/home";
 import BettingPage from "./Components/Betting/BettingPage";
 import AccountPage from "./Components/Accounts/AccountPage";
@@ -25,11 +26,13 @@ function App  () {
     if(!user){
         return(
             <Link to="/login" className="custom-btn btn amber black-text">
-                        Login </Link>
+                        Login/Register </Link>
         )
     }
-    else{
+    else if(user){
+        console.log("logout")
         return(
+            
             <button className = "custom-btn btn red black-text" 
                             onClick = {handleLogout}
                         > Logout
@@ -37,9 +40,17 @@ function App  () {
         )
     }
 }
+const Profile=()=>{
+    if(user){
+        return(
+            <li><a href="/accounts"> Signed in as: {user.username} </a></li>
+        )
+    }
+}
 const handleLogout = () => {
     localStorage.clear();
     setUserData()
+    console.log(user)
   };
 
     return (
@@ -50,13 +61,15 @@ const handleLogout = () => {
                     <ul>
                         <li><a href="/">Home</a></li>
                         <li><a href="/search">Encyclopedia</a></li>
+                        <li><a href="/search2">New Search</a></li>
                         <li><a href="/betting">Betting</a></li>
                         <li><a href="/datavis">DataVis</a></li>
                         <li><a href="/accounts">Account</a></li>
                         <li><a href="/bettors">Bettors</a></li>
                         {/* <Link to="/login" className="custom-btn btn amber black-text">
                         Login </Link> */}
-                        <Themedbutton></Themedbutton>
+                          <Themedbutton></Themedbutton>
+                        <Profile></Profile>
                     </ul>
                 </div>
             </nav>
@@ -65,6 +78,7 @@ const handleLogout = () => {
                 <Route exact path = "/" element = {<HomePage/>}/>
                 <Route exact path = "/betting" element = {<BettingPage/>} />
                 <Route exact path = "/search" element = {<SearchPage/>} />
+                <Route exact path = "/search2" element = {<SearchPage2/>} />
                 <Route exact path = "/datavis" element = {<DataVisPage/>}/>
                 <Route exact path = "/accounts" element = {<AccountPage/>}/>
                 <Route exact path="/login" element={<Login/>} />

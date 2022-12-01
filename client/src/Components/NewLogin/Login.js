@@ -1,7 +1,8 @@
-import React, {useState , useEffect} from "react";
+import React, {useState , useEffect, useContext} from "react";
 import "../Betting/betting.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { UserProvider,UserContext } from '../../UserContext';
 
 
 
@@ -22,6 +23,8 @@ export default function NewLogin(props){
 
     //new
     const [user, setUser] = useState();
+
+    // const{user, setUserData} = useContext(UserContext);
 
     useEffect(() => {
       if (!login){
@@ -51,6 +54,9 @@ export default function NewLogin(props){
 
     // set the state of the user
     setUser(data[0]);
+    // console.log("consoled")
+    // console.log(user)
+   
     // store the user in localStorage
     localStorage.setItem("user", JSON.stringify(data[0]));
 
@@ -87,8 +93,13 @@ const handleEnter = async(e) => {
         
         <div className="row">
           <div className="col s8 offset-s2">
+            <br></br>
             <Link to="/" className="custom-btn btn white black-text" >
-               Back to
+               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="1 0 16 10">
+              <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+              </svg>
+              
+              Back to
               home
             </Link>
             <div className="col s12" style={{ paddingLeft: "11.250px" }}>

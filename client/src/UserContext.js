@@ -16,3 +16,6 @@ export const UserProvider = ({ children }) => {
     );
   };
 
+  // export const LikeContext = createContext({
+  //   setLikes: () => {},
+  // });

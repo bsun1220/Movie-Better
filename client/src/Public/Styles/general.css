@@ -7,7 +7,7 @@
 .frontpage{
     background-color:rgb(40, 134, 196);
     color:white;
-    min-height:80vh;
+    min-height:50vh;
     margin:0px;
     padding:0px;
     display:flex;
@@ -145,7 +145,6 @@ button:hover{
     cursor:pointer;
     transition:0.5s;
 }
-
 .custom-btn{
     border-radius: 25px;
     transition: transform .2s; 
@@ -161,4 +160,13 @@ button:hover{
 
 .custom-btn-two{
     width: 150px;
+}
+.custom-btn-square{
+    border-radius: 10px;
+    margin-left:20px;
+    margin-right:20px;
+    transition: transform .5s; 
+}
+.custom-btn-square:hover{
+    transform: scale(1.05);
 }
