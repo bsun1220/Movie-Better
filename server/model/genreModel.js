@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
-
+//Model that shows the genre of a given movie, using its tid
 const GenreSchema = new Schema({
     tid:{
         type:String,

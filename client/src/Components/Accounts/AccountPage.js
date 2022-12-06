@@ -1,21 +1,21 @@
 import "./accounts.css";
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect, useContext} from "react"
 import { Link } from "react-router-dom";
 import EditAccount from "./EditAccount";
 import VisualPage from "./Visual";
 import axios from "axios";
 import Logout from "../NewLogin/Logout";
+import { UserProvider,UserContext } from '../../UserContext';
 
 export default function AccountPage(){
     const [edit, setEdit] = useState("");
     const [visual, setVisual] = useState("");
 
-    const [user, setUserData] =  useState( JSON.parse(localStorage.getItem("user")));
+    const [user, setUser] =  useContext(UserContext);
 
     const handleLogout = () => {
         localStorage.clear();
-        setUserData()
-
+        setUser(null)
       };
 
     useEffect(() => {
@@ -29,14 +29,15 @@ export default function AccountPage(){
             const data = request.data;
             // setEdit(<EditAccount id = {Math.random()} setUserData = {setUserData} user = {user} old_user = {user.username}/>)
             // setVisual(<VisualPage user = {user} bets = {data} setUserData = {setUserData}/>)
+        
             const url2 = "http://localhost:5001/gettemp/" + user.uid;
             const request2 = await axios.get(url2);
             const temp = request2.data;
             console.log("hereiam")
             console.log(temp)
             
-            setEdit(<EditAccount id = {Math.random()} user = {user} setUserData = {setUserData} old_user = {user.username} pw = {temp} />)
-            setVisual(<VisualPage user = {user} setUserData = {setUserData} bets = {data} />)
+            setEdit(<EditAccount id = {Math.random()} user = {user} setUser = {setUser} old_user = {user.username} pw = {temp} />)
+            setVisual(<VisualPage user = {user} setUser = {setUser} bets = {data} />)
             // setLogin("");
         }
         func();
@@ -47,7 +48,7 @@ export default function AccountPage(){
         <div>
             <div className = {"frontpage"} style = {{"backgroundColor":"#f2aeb1"}}>
                 <div style = {{"display":"flex", "alignItems":"center"}}>
-                    <img src =  "account.svg" height = "100px"/>
+                    <img src =  "account.svg" alt = " " height = "100px"/>
                     <h1 style = {{"marginLeft": "20px"}}>Account</h1>
                 </div>
                 <p style = {{"marginTop":"10px"}}>Edit / Bet Portfolio</p>

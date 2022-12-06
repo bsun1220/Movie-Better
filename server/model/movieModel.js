@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
-
+//Model on the past movies in our database (excluding 2023 releases)
+//tid are unique to each movie, and we get title, year, length, rating, and votes
 const MovieSchema = new Schema({
     tid:{
         type:String,

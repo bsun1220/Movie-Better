@@ -1,12 +1,13 @@
-import React, {useState } from "react";
+import React, {useState, useContext } from "react";
 import MovieCard from "./card";
 import { Link } from "react-router-dom";
 import "./betting.css";
 import axios from "axios";
+import { UserProvider,UserContext } from '../../UserContext';
 
 export default function BettingPage(){
     const [movies, setMovies] = useState("");
-    const [user, setUserData] = useState(JSON.parse(localStorage.getItem("user")));
+    const [user, setUser] =  useContext(UserContext);
 
     // useEffect(() => {
         const func = async() =>{
@@ -15,7 +16,7 @@ export default function BettingPage(){
             const data = request.data;
             const list = []
             data.forEach((element) => {
-                const card = <MovieCard key = {element.nmid} data = {element} user = {user} setUserData = {setUserData}/>
+                const card = <MovieCard key = {element.nmid} data = {element} user = {user} setUser = {setUser}/>
                 list.push(card);
             })
             setMovies(list);
@@ -34,14 +35,6 @@ export default function BettingPage(){
                 </div>
                 <p style = {{"marginTop":"10px"}}>Platform</p>
             </div>
-            {/* <Login setUserData = {setUserData}/> */}
-
-            {/* <div className = "secondarypage">
-                {/* <h1 style = {{"fontWeight":"600", "fontSize":"40px"}}>You Are Logged In As:</h1>
-                <p style = {{"marginTop":"10px", "marginBottom":"15px", "fontSize":"30px"}}> <b>Username:</b> {user.username}</p>
-                <p style = {{"marginTop":"10px", "marginBottom":"15px", "fontSize":"30px"}}> <b>First Name:</b> {user.firstname}</p>
-                <p style = {{"marginTop":"10px", "marginBottom":"15px", "fontSize":"30px"}}> <b>Last Name:</b> {user.lastname}</p> */}
-            {/* </div> */} 
 
             <div className = "secondarypage">
             <p style = {{"marginTop":"10px", "marginBottom":"15px", "color":"green", "fontSize":"30px"}}> <b>Current Balance:</b> ${user.balance}</p>
@@ -65,7 +58,6 @@ export default function BettingPage(){
                 </div>
                 <p style = {{"marginTop":"10px"}}>Platform</p>
             </div>
-            {/* <Login setUserData = {setUserData}/> */}
 
             <div className = "secondarypage">
                 <h1 style = {{"fontWeight":"600", "fontSize":"40px"}}>You Are Not Logged In.</h1>

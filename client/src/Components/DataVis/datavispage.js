@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import StartEntry from "./startentry";
 import CommentSection from "./comment";
-import Login from "../Betting/OldLogin";
+
 
 export default function DataVisPage(){
 

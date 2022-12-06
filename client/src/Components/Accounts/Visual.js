@@ -1,9 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import BetEdit from "./BetEdit";
+import { UserProvider,UserContext } from '../../UserContext';
 
 
 export default function VisualPage(props){
     const [betlist, setBetList] = useState("")
+    const [user, setUser] =  useContext(UserContext);
 
 
     useEffect(() => {
@@ -12,11 +14,11 @@ export default function VisualPage(props){
         props.bets.forEach((data) => {
             list.push(<BetEdit key = {i} data = {data} 
                 index = {i} user = {props.user} 
-                setUserData = {props.setUserData}/>)
+                setUser = {props.setUser}/>)
             i+=1; 
         });
         setBetList(list);
-    }, [props.bets, props.user, props.setUserData]);
+    }, [props.bets, props.user, props.setUser]);
 
     return(
         <div className = {"vis"}>

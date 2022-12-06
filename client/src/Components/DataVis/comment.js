@@ -1,7 +1,9 @@
 import React, {useState, useEffect,useContext} from "react";
 import axios from "axios";
 import CommentCard from "./commentcard";
-import LikeContext from "./commentcard";
+import { UserProvider,UserContext } from '../../UserContext';
+
+// export const LikeContext = React.createContext(null)
 
 export default function CommentSection(prop){
 
@@ -9,14 +11,14 @@ export default function CommentSection(prop){
     const [comments, setComments] = useState("");
     const [likes, setLikes] = useState(0);
     const [errorMessage, setErrorMessage] = useState("");
-    const [user2, setUserData] = useState( JSON.parse(localStorage.getItem("user")));
+    const [user] = useContext(UserContext);
 
     const handleChange = (e) => {
         setContent(e.target.value);
     }
     const handleEnter = async(e) => {
         const val = content.replace(/\s/g, '');
-        if(!user2){
+        if(!user){
             setErrorMessage(<p style = {{"color":"red"}}>Login to leave a comment</p>)
         } 
         else if(content.length<=10){
@@ -24,7 +26,7 @@ export default function CommentSection(prop){
         } else{
             setErrorMessage("")
         if(val !== "" && content.length > 10){
-            const req = {"username":prop.data.username, "content":content, "likes": 0};
+            const req = {"username":prop.data.username, "content":content, "likes": likes};
             const url = ("http://localhost:5001/comment");
             await axios.put(url, req);
 
@@ -32,7 +34,7 @@ export default function CommentSection(prop){
             const data = request.data;
             const list = []
             data.forEach((element) => {
-                const node = <CommentCard key = {element.username} data = {element} likes={0}/>
+                const node = <CommentCard key = {element._id} data = {element} likes={element.likes}/>
                 list.push(node)
             });
             setComments(list);
@@ -49,7 +51,7 @@ export default function CommentSection(prop){
             const data = request.data;
             const list = []
             data.forEach((element) => {
-                const node = <CommentCard key = {element.username} data = {element} likes={0}/>
+                const node = <CommentCard key = {element._id} data = {element} likes={element.likes}/>
                 list.push(node)
             });
             setComments(list);

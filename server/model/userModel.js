@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
-
+//This is a model for our users that are entered into the database
+//the user uid and usernames are unique for each user
 const UserSchema = new Schema({
     uid:{
         type:String,

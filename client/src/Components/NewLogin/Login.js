@@ -22,9 +22,9 @@ export default function NewLogin(props){
     const [mess, setMess] = useState("");
 
     //new
-    const [user, setUser] = useState();
+    // const [user, setUser] = useState({uid:"", username: ""});
 
-    // const{user, setUserData} = useContext(UserContext);
+    const [user, setUser] = useContext(UserContext);
 
     useEffect(() => {
       if (!login){
@@ -55,14 +55,13 @@ export default function NewLogin(props){
         }
 
     // set the state of the user
-    setUser(data[0]);
-    // console.log("consoled")
-    // console.log(user)
+   
    
     // store the user in localStorage
     localStorage.setItem("user", JSON.stringify(data[0]));
 
-
+    await setUser(JSON.parse(localStorage.getItem("user")));
+  
     setErrorMessage(<p style = {{"color":"green", "fontSize":"50px"}}>Logged In!</p>);
 
 }

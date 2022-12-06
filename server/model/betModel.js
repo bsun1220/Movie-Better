@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
-
+//Model for the bets made on a movie by a user
 const BetSchema = new Schema({
     uid:{
         type:String,

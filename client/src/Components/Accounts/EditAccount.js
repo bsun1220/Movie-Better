@@ -89,7 +89,7 @@ export default function EditAccount(props){
         const url = "http://localhost:5001/login/" + username;
         const req = await axios.get(url);
         if (req.data.length !== 0 && props.old_user !== username){
-            props.setUserData("");
+            props.setUser("");
             setError(<p style = {{"marginTop":"20px", "color":"red"}}>Username taken</p>)
             return; 
         }
@@ -107,7 +107,7 @@ export default function EditAccount(props){
         const new_url = "http://localhost:5001/login/" + username + "/" + password;
         const request = await axios.get(new_url);
         const data = request.data;
-        props.setUserData(data[0]);
+        props.setUser(data[0]);
 
         localStorage.setItem("user", JSON.stringify(data[0]))
 

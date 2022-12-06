@@ -35,12 +35,14 @@ export default function Register(props){
             // props.setUserData("");
             setCheck(false)
             setErrorMessage(<p style = {{"color":"red"}}>No spaces in password</p>)
+            setCheck(true)
             return;
         }
         if (password.length < 8){
             // props.setUserData("");
             setCheck(false)
             setErrorMessage(<p style = {{"color":"red"}}>Must be &ge; 8 characters</p>)
+            setCheck(true)
             return;
         }
 
@@ -53,6 +55,7 @@ export default function Register(props){
             // props.setUserData("");
             setCheck(false)
             setErrorMessage(<p style = {{"color":"red"}}>Must include a number</p>)
+            setCheck(true)
             return; 
         }
 
@@ -62,12 +65,14 @@ export default function Register(props){
             // props.setUserData("");
             setCheck(false)
             setErrorMessage(<p style = {{"color":"red"}}>No spaces in username</p>)
+            setCheck(true)
             return; 
         }
         if (userName.length < 5){
             // props.setUserData("");
             setCheck(false)
             setErrorMessage(<p style = {{"color":"red"}}>Username must be &ge; 5 characters</p>)
+            setCheck(true)
             return; 
         }
 
@@ -80,6 +85,7 @@ export default function Register(props){
             // props.setUserData("");
             setCheck(false)
             setErrorMessage(<p style = {{"color":"red"}}>Username taken</p>)
+            setCheck(true)
             return; 
         }
 

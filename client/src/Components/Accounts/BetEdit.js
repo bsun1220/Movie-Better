@@ -8,6 +8,8 @@ export default function BetEdit(props){
     const [input, setInput] = useState("");
     const [error, setError] = useState("");
 
+
+
     const onChange = (e) =>{
         e.preventDefault();
         setInput(e.target.value);
@@ -48,7 +50,10 @@ export default function BetEdit(props){
         const request = await axios.get(new_url);
         const data = request.data;
 
-        props.setUserData(data[0]);
+        props.setUser(data[0]);
+
+        localStorage.setItem("user", JSON.stringify(data[0]));
+        
         setError(<p style = {{"color":"green"}}>Bet Adjusted!</p>)
         setInput("");
 

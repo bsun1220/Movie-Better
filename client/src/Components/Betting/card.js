@@ -65,7 +65,7 @@ export default function MovieCard(props){
         </p>);
 
         localStorage.setItem("user", JSON.stringify(data))
-        props.setUserData(data);
+        props.setUser(data);
 
     }
 

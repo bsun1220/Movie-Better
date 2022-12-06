@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useState, useEffect} from "react";
 import { Route, Routes} from "react-router-dom";
 import DataVisPage from "./Components/DataVis/datavispage";
 import SearchPage from "./Pages/SearchPage";
@@ -10,19 +10,28 @@ import Register from "./Components/NewLogin/Register";
 import Login from "./Components/NewLogin/Login";
 import Bettors from "./Components/Bettors/BettorPage";
 import { Link } from "react-router-dom";
-import { UserProvider,UserContext } from './UserContext';
+import { UserProvider, UserContext } from './UserContext';
 import "./Public/Styles/index.css"
 import "./Public/Styles/widget.css"
 import "./Public/Styles/general.css"
 
 
 function App  () {
-    // const{user, setUserData} = useContext(UserContext);
-   const [user, setUserData] = useState(JSON.parse(localStorage.getItem("user")));
-   const Themedbutton=()=>{
-    console.log("hi")
-    console.log(user)
+      const[user, setUser] = useState();
+//    const [user, setUserData] = useState(JSON.parse(localStorage.getItem("user")));
+   
 
+
+   useEffect(() => {
+    if(JSON.parse(localStorage.getItem("user"))){
+        setUser(JSON.parse(localStorage.getItem("user")))
+    } else{
+        setUser(null)
+    }
+    console.log('userchange', user);
+  }, [])
+  
+   const Themedbutton=()=>{
     if(!user){
         return(
             <Link to="/register" className="custom-btn btn amber black-text">
@@ -32,7 +41,6 @@ function App  () {
     else if(user){
         console.log("logout")
         return(
-            
             <button className = "custom-btn btn red black-text" 
                             onClick = {handleLogout}
                         > Logout
@@ -49,19 +57,19 @@ const Profile=()=>{
 }
 const handleLogout = () => {
     localStorage.clear();
-    setUserData()
+    setUser(null)
     console.log(user)
   };
 
     return (
         <div>
-             {/* <UserContext.Provider value={user}> */}
+        <UserContext.Provider value={[user, setUser]}>
             <nav className="nav-center z-depth-0" role="navigation" style = {{"backgroundColor":"aliceblue"}}>
                 <div className="center-align nav-wrapper container">
                     <ul>
                         <li><a href="/">Home</a></li>
                         <li><a href="/search">Encyclopedia</a></li>
-                        <li><a href="/search2">New Search</a></li>
+                        {/* <li><a href="/search2">New Search</a></li> */}
                         <li><a href="/betting">Betting</a></li>
                         <li><a href="/datavis">DataVis</a></li>
                         <li><a href="/accounts">Account</a></li>
@@ -85,7 +93,7 @@ const handleLogout = () => {
                 <Route exact path="/register" element={<Register/>} />
                 <Route exact path="/bettors" element={<Bettors/>} />
             </Routes>
-            {/* </UserContext.Provider> */}
+            </UserContext.Provider>
         </div>
     );
    };

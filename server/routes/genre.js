@@ -3,6 +3,8 @@ const Router = express.Router()
 const Genre = require("../model/genreModel")
 const Movie = require("../model/movieModel") 
 
+
+// Routes related to the genre of a given movie
 Router.post("/genre", async(req, res) => {
     const genre = new Genre(req.body);
     try {
@@ -14,7 +16,7 @@ Router.post("/genre", async(req, res) => {
     }
 
 });
-
+//Gets general genre analytics of a movie by its id
 Router.get("/genre/:id", async(req, res) => {
     const id = req.params.id;
     const genres = await Genre.find({genre:id});
@@ -73,7 +75,7 @@ Router.get("/genre/:id", async(req, res) => {
     res.send(final_data);
 });
 
-
+//Get the movies of a given genre
 Router.post("/mygenre", async(req, res) => {
     const titleGenre = req.body.genre;
  

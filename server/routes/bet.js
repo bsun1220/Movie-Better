@@ -3,6 +3,8 @@ const Router = express.Router();
 const Bet = require("../model/betModel");
 const User = require("../model/userModel");
 
+//Routes for anything related to betting; getting current bets, making/setting bets
+
 Router.get("/getbet", async(req, res) => {
     const amount = await Bet.find({});
     res.send(amount);
@@ -28,6 +30,7 @@ Router.get("/getbetnmid/:nmid", async(req, res) => {
     res.send(amount);
 });
 
+//Routes for creating our first leaderboard, which is the most money spent by a given user
 Router.get("/leaderboard1", async(req, res) => {
     const bets = await Bet.find({}).sort({"amount":-1}).limit(5);
 
@@ -44,6 +47,7 @@ Router.get("/leaderboard1", async(req, res) => {
     res.send(bet_size);
 });
 
+//Routes for creating our second leaderboard, which is who has placed the most amount of bets
 Router.get("/leaderboard2", async(req, res) => {
     const users = await User.find({})
     const data = []
@@ -71,6 +75,7 @@ Router.put("/setbet", async(req, res) => {
     }
 });
 
+//This is the route for when a user wants to edit the amount of their current bet
 Router.put("/editbet/:uid/:nmid/:rating/:amount", async(req, res) => {
     const uid = req.params.uid;
     const nmid = req.params.nmid;

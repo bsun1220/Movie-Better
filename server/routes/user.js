@@ -5,6 +5,7 @@ const User = require("../model/userModel");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
+//Routes relating to our users
 export var temps = {};
 
 Router.get("/login", async(req, res) => {
@@ -24,6 +25,7 @@ Router.put("/balance", async(req, res) => {
         });
 });
 
+//Whenever a user wants to edit their accounts
 Router.put("/accountedit", async(req, res) => {
     const username = req.body.old_username;
     const new_user = req.body.username;
@@ -48,6 +50,7 @@ Router.put("/accountedit", async(req, res) => {
         });
 });
 
+//When a user uses a reference code
 Router.put("/turnoff", async(req, res) => {
     const username = req.body.username;
     const users = await User.find({username:username});
@@ -68,6 +71,7 @@ Router.put("/turnoff", async(req, res) => {
 
 });
 
+//Gets the user login by their username
 Router.get("/login/:name", async(req, res) => {
     const name = req.params.name;
     // console.log("connected")
@@ -75,7 +79,7 @@ Router.get("/login/:name", async(req, res) => {
     const user = await User.find({"username":name});
     res.send(user);
 });
-
+//Gets user login by their name and password, checks if entered password matches the hashed password stored in the database
 Router.get("/login/:name/:password", async(req, res) => {
     const name = req.params.name;
     const password = req.params.password;
@@ -88,7 +92,6 @@ Router.get("/login/:name/:password", async(req, res) => {
 
     temps[myUID]= password
 
-    // console.log(temps)
     var myHashes = new Array()
 
     const hash = await User.find({"username":name},{"password":1});
@@ -112,7 +115,7 @@ Router.get("/login/:name/:password", async(req, res) => {
   
     
 });
-
+//User registers, hashes their password 
 Router.put("/loginbet", async (req, res) => {
     const {username , password} = req.body;
     const count = await User.countDocuments({}).exec();
@@ -146,7 +149,7 @@ Router.put("/loginbet", async (req, res) => {
 
   
 });
-
+//Gets the user password
 Router.get("/gettemp/:uid", async(req, res) => {
     const uid = req.params.uid;
     console.log(uid)

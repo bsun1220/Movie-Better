@@ -2,6 +2,10 @@ const express = require("express")
 const Router = express.Router()
 const BetMovie = require("../model/betMovieModel")
 
+
+//These are routes for anything relating to our 2023/future movies that users will bet on, such as
+//getting a bet movie by its id or by its title
+
 Router.put("/betmovie", async(req, res) => {
     const bet = new BetMovie(req.body);
     try {

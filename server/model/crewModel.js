@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
-
+//Model that shows an person's role in a movie; uid is a unique id
+//  for each person (their profession can vary from actor to director)
+// tid is a unique id for each movie
 const CrewSchema = new Schema({
     uid:{
         type:String,

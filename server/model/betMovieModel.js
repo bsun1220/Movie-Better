@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
-
+//Model for 2023 movies that will be bet on by users
 const BetMovieSchema = new Schema({
     nmid:{
         type:String,

@@ -5,6 +5,7 @@ const Famous = require("../model/famousModel")
 const Movie = require("../model/movieModel")
 const Crew = require("../model/crewModel")
 
+//Routes relating to the information of crewmembers
 Router.put("/info", async(req, res) => {
     const info = new Info(req.body);
     try {
@@ -17,6 +18,7 @@ Router.put("/info", async(req, res) => {
 
 });
 
+//Gets general anayltics (min, median, max, etc) of a crew member given their name
 Router.get("/crew/:name", async(req,res)=>{
     const id = req.params.name;
     const director_info = await Info.find({name:id}).limit(1);
@@ -101,7 +103,7 @@ Router.post("/info", async(req, res) => {
     }
 });
 
-//actor recent movies
+//Finds an actor's recent movies
 
 Router.post("/infoRecent", async(req, res) => {
     const actorName = req.body.name;
@@ -121,6 +123,7 @@ Router.post("/infoRecent", async(req, res) => {
     }
 });
 
+//Finds a director's recent movies
 Router.post("/infoRecentD", async(req, res) => {
     const actorName = req.body.name;
     const actorID = await Info.find({name:actorName}, {uid:1})
