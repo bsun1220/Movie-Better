@@ -1,9 +1,35 @@
-import React from "react"
+import React , {useContext} from "react"
 import { Link } from "react-router-dom";
+import {UserContext } from '../../UserContext';
+
+
 
 //Our landing page that describes our website and allows users
 //To click a button to begin betting, takes them to a registration page
 export default function HomePage(){
+    const [user, setUser] =  useContext(UserContext);
+
+    const Introbutton=()=>{
+        if(!user){
+            return(
+            <Link
+            to="/register"
+            className="custom-btn btn white black-text" 
+          >
+            Start Betting!
+          </Link>
+            )
+        } else{
+            return(
+            <Link
+            to="/betting"
+            className="custom-btn btn green black-text" 
+          >
+            Start Betting!
+          </Link>
+            )
+        }
+    }
     return(<div>
         <div className = {"frontpage"} style = {{"backgroundColor":"#5d47c7"}}>
             <div style = {{"display":"flex", "alignItems":"center"}}>
@@ -13,12 +39,7 @@ export default function HomePage(){
             <p style = {{"marginTop":"10px"}}>IMDB</p>
             <br></br>
 
-            <Link
-                to="/register"
-                className="custom-btn btn white black-text" 
-              >
-                Start Betting!
-              </Link>
+           <Introbutton></Introbutton>
 
         </div>
         <div className = {"aboutpage"}>
