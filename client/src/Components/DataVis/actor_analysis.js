@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CrewData from "./crewdata";
 
+//Analyzing an actor's past movies
+
 export default function ActorAnalysis(props){
     const [buttonData, setButtonData] = useState("");
     const actor_data = props.actors.split(", ")

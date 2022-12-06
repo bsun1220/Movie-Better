@@ -1,9 +1,9 @@
 import React, {useState, useEffect,useContext} from "react";
 import axios from "axios";
 import CommentCard from "./commentcard";
-import { UserProvider,UserContext } from '../../UserContext';
+import {UserContext } from '../../UserContext';
 
-// export const LikeContext = React.createContext(null)
+//Logged in users can place a comment on our datavis page
 
 export default function CommentSection(prop){
 

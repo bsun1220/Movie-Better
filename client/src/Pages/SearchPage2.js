@@ -4,6 +4,7 @@ import React from "react";
 // import 'bootstrap/dist/css/bootstrap.css';
 // import Dropdown from 'react-bootstrap/Dropdown';
 
+//Not being implemented, but if we wanted an enhanced encyclopedia
 
 export default function SearchPage2(){
     return(

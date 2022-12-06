@@ -1,5 +1,5 @@
 import React from "react";
-
+//Card used to show the current bets
 export default function Card(prop) {
     return(<div class="row">
     <div class="col s12 m6">

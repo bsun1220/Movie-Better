@@ -6,6 +6,10 @@ import TimeSearch from "./TimeSearch";
 import TitleSearch from "./TitleSearch";
 import LengthSearch from "./LengthSearch";
 
+// This is our Movie Inventory page/ search page 
+//This is connected to an extensive database on movies from IMDB from the past to 2022
+//Users can choose different types of queries to do, such as by actor, director, etc
+
 export default function SearchPage(){
     return <div>
         <div className = {"frontpage"}>

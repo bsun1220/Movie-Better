@@ -1,6 +1,8 @@
 import React from "react"
 import { Link } from "react-router-dom";
 
+//Our landing page that describes our website and allows users
+//To click a button to begin betting, takes them to a registration page
 export default function HomePage(){
     return(<div>
         <div className = {"frontpage"} style = {{"backgroundColor":"#5d47c7"}}>

@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import axios from "axios";
 
+//Cards for the movies that are bet on
+//This handles the submitted bets 
 export default function MovieCard(props){
     
     const [rating, setRating] = useState("");

@@ -47,6 +47,7 @@ export default function EditAccount(props){
         }));
     };
 
+    //Error handling for the account parameters
     const handleSubmit = async(e) => {
         const {username, password, firstname, lastname} = account;
         console.log(username)

@@ -1,5 +1,5 @@
 import React from "react";
-
+//Whenever we need to display a movie and all of its information
 export default function MovieInfoCard(prop){
     return(
         <div class="row">

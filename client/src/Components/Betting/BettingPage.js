@@ -3,13 +3,17 @@ import MovieCard from "./card";
 import { Link } from "react-router-dom";
 import "./betting.css";
 import axios from "axios";
-import { UserProvider,UserContext } from '../../UserContext';
+import {UserContext } from '../../UserContext';
+
+//This is our Betting Movie Inventory and Platform
+//The inventory of movies is not available to everyone; you must be logged in
+//If not logged in, you will be redirected to a the login page
+
 
 export default function BettingPage(){
     const [movies, setMovies] = useState("");
     const [user, setUser] =  useContext(UserContext);
 
-    // useEffect(() => {
         const func = async() =>{
             const url = "http://localhost:5001/betmovieid";
             const request = await axios.get(url);
@@ -22,7 +26,6 @@ export default function BettingPage(){
             setMovies(list);
         };
         func();
-    // }, [user]);
 
     if(user){
 

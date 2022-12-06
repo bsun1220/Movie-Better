@@ -3,6 +3,8 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import MovieInfoCard from '../InfoCards/MovieInfoCard';
 
+//An endpoint we ended up not using in our encyclopedia 
+//We have something similar for our datavis of 2023 movies
 export default function TopMovies(){
 
     const [userInput, setUserInput] = useState("");

@@ -1,5 +1,5 @@
 import React from "react";
-
+//Displaying a movie genre
 export default function GenreInfoCard(prop){
     return(
         <div class="row">

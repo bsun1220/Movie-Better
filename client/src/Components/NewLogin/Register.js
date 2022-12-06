@@ -3,7 +3,9 @@ import "../Betting/betting.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-
+//Users can register to our site 
+//username and password must fit certain qualifications
+//after registered, you are automatically logged in!
 export default function Register(props){
 
 

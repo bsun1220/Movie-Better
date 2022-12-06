@@ -1,6 +1,7 @@
 import React, { useEffect , useState } from "react";
 import Chart from "react-google-charts";
 
+//Analysis of a movie's crew
 export default function CrewData(props){
     const [five, setFive] = useState("");
     const histogramChartOption = {

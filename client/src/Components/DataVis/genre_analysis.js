@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import GenreData from "./genredata";
 
+//Analysis of a genre's past movies
 export default function GenreAnalysis(props){
     const [buttonData, setButtonData] = useState("");
     const genre_data = props.genre.split(", ");

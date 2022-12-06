@@ -1,11 +1,13 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import StartEntry from "./startentry";
 import CommentSection from "./comment";
+import {UserContext } from '../../UserContext';
 
+//DataVis page and description of its functionality
 
 export default function DataVisPage(){
 
-    const [user, setUserData] = useState( JSON.parse(localStorage.getItem("user")));
+    const [user, setUser] = useContext(UserContext)
     const [page, setPage] = useState();
 
 

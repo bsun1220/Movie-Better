@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CrewData from "./crewdata";
 
-
+//Analysis of a director's past movies
 export default function DirectorAnalysis(props){
     const [buttonData, setButtonData] = useState("");
     const director_data = props.directors.split(", ")

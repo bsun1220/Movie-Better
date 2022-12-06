@@ -2,8 +2,10 @@ import React, {useState , useEffect, useContext} from "react";
 import "../Betting/betting.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { UserProvider,UserContext } from '../../UserContext';
+import { UserContext } from '../../UserContext';
 
+//The login feature of the website
+//User data saves across pages and when you refresh the page
 
 
 export default function NewLogin(props){
@@ -20,10 +22,6 @@ export default function NewLogin(props){
 
     const [ref, setRef] = useState("");
     const [mess, setMess] = useState("");
-
-    //new
-    // const [user, setUser] = useState({uid:"", username: ""});
-
     const [user, setUser] = useContext(UserContext);
 
     useEffect(() => {
@@ -54,7 +52,6 @@ export default function NewLogin(props){
             return;
         }
 
-    // set the state of the user
    
    
     // store the user in localStorage

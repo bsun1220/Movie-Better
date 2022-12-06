@@ -1,10 +1,9 @@
-// import "./accounts.css";
-import React, {useState, useEffect} from "react"
-import { Link } from "react-router-dom";
+import React from "react"
 import LookUp from "../Accounts/lookup";
 import LeaderBoard from "../Accounts/leaderboard";
-import axios from "axios";
 
+//Our bettor page where users can lookup other bettors
+//And view leaderboards of all of our user base
 export default function BettorPage(){
 
 

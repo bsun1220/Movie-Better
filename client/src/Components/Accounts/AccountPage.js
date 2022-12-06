@@ -4,15 +4,18 @@ import { Link } from "react-router-dom";
 import EditAccount from "./EditAccount";
 import VisualPage from "./Visual";
 import axios from "axios";
-import Logout from "../NewLogin/Logout";
-import { UserProvider,UserContext } from '../../UserContext';
+import {UserContext } from '../../UserContext';
+
+//This is our User Account / Transaction Dashboard
+//Full functionality is only accesible by logged in users
 
 export default function AccountPage(){
     const [edit, setEdit] = useState("");
     const [visual, setVisual] = useState("");
-
+    //Grabbing the status of the user who is logged in and getting their information
     const [user, setUser] =  useContext(UserContext);
 
+    //Clears the local storage and logs out the user
     const handleLogout = () => {
         localStorage.clear();
         setUser(null)
@@ -27,22 +30,21 @@ export default function AccountPage(){
             const url = "http://localhost:5001/getbetuid/" + user.uid;
             const request = await axios.get(url);
             const data = request.data;
-            // setEdit(<EditAccount id = {Math.random()} setUserData = {setUserData} user = {user} old_user = {user.username}/>)
-            // setVisual(<VisualPage user = {user} bets = {data} setUserData = {setUserData}/>)
         
             const url2 = "http://localhost:5001/gettemp/" + user.uid;
             const request2 = await axios.get(url2);
             const temp = request2.data;
             console.log("hereiam")
             console.log(temp)
-            
+            //The user and bet dashboard
             setEdit(<EditAccount id = {Math.random()} user = {user} setUser = {setUser} old_user = {user.username} pw = {temp} />)
             setVisual(<VisualPage user = {user} setUser = {setUser} bets = {data} />)
-            // setLogin("");
+
         }
         func();
 
     }, [user]);
+    //If Logged In
     if(user){
     return(
         <div>
@@ -60,12 +62,12 @@ export default function AccountPage(){
                            </button>
 
             </div>
-            {/* {login} */}
             {edit}
             {visual}
         </div>
     )
     }
+//If not logged in, do not show the edit or bet dashboard because there is no account to access
 else{
     return(  
         <div>  

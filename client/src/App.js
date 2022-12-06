@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from "react";
+import React, { useState, useEffect} from "react";
 import { Route, Routes} from "react-router-dom";
 import DataVisPage from "./Components/DataVis/datavispage";
 import SearchPage from "./Pages/SearchPage";
@@ -10,17 +10,16 @@ import Register from "./Components/NewLogin/Register";
 import Login from "./Components/NewLogin/Login";
 import Bettors from "./Components/Bettors/BettorPage";
 import { Link } from "react-router-dom";
-import { UserProvider, UserContext } from './UserContext';
+import { UserContext } from './UserContext';
 import "./Public/Styles/index.css"
 import "./Public/Styles/widget.css"
 import "./Public/Styles/general.css"
 
 
-function App  () {
-      const[user, setUser] = useState();
-//    const [user, setUserData] = useState(JSON.parse(localStorage.getItem("user")));
-   
 
+
+function App  () {
+    const[user, setUser] = useState();
 
    useEffect(() => {
     if(JSON.parse(localStorage.getItem("user"))){
@@ -31,6 +30,10 @@ function App  () {
     console.log('userchange', user);
   }, [])
   
+
+  //This button is on our navbar, if a user is logged in it will say logout
+  //And vice versa
+
    const Themedbutton=()=>{
     if(!user){
         return(
@@ -48,6 +51,9 @@ function App  () {
         )
     }
 }
+
+//Tells a user who they are logged in as so that they can easily remember 
+//If they are signed in 
 const Profile=()=>{
     if(user){
         return(
@@ -55,13 +61,17 @@ const Profile=()=>{
         )
     }
 }
+
+//Logout of the website
 const handleLogout = () => {
     localStorage.clear();
     setUser(null)
     console.log(user)
   };
 
+
     return (
+        //Our navbar components
         <div>
         <UserContext.Provider value={[user, setUser]}>
             <nav className="nav-center z-depth-0" role="navigation" style = {{"backgroundColor":"aliceblue"}}>
@@ -74,8 +84,6 @@ const handleLogout = () => {
                         <li><a href="/datavis">DataVis</a></li>
                         <li><a href="/accounts">Account</a></li>
                         <li><a href="/bettors">Bettors</a></li>
-                        {/* <Link to="/login" className="custom-btn btn amber black-text">
-                        Login </Link> */}
                           <Themedbutton></Themedbutton>
                         <Profile></Profile>
                     </ul>

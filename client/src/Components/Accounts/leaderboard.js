@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import LeaderCard from "./leadercard";
 import axios from "axios";
 
+//This is to display bettor leaderboards found on the Bettors page
+//Ranked by most bets places and most money spent
 export default function LeaderBoard(){
 
     const [leader1, setLeader1] = useState("");

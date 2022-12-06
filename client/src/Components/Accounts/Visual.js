@@ -1,11 +1,12 @@
-import React, {useEffect, useState, useContext} from "react";
+import React, {useEffect, useState} from "react";
 import BetEdit from "./BetEdit";
-import { UserProvider,UserContext } from '../../UserContext';
+// import {UserContext } from '../../UserContext';
 
+//Bet transaction dashboard section of the accounts page
 
 export default function VisualPage(props){
     const [betlist, setBetList] = useState("")
-    const [user, setUser] =  useContext(UserContext);
+    // const [user, setUser] =  useContext(UserContext);
 
 
     useEffect(() => {

@@ -1,13 +1,16 @@
-import React, {useState, useEffect, useContext, useRef} from "react";
+import React, {useState} from "react";
 import axios from "axios";
-import LikeContext from "./comment";
 
-
-// export const LikeContext = React.createContext()
+//Comments can be liked by users
+//There is not a limit to how many times a user can like or dislike a given comment
+//This feature can be refined in future work however it is fully functional
+//Possible ideas include showing two separate numbers for likes and dislikes, like how youtube
+//used to have
 
 export default function CommentCard(prop){
 
   const [likes, setLikes] = useState(prop.data.likes);
+
   // const [current, setCurrent]= useState(prop)
 
   // console.log("starting likes", likes)
@@ -29,11 +32,7 @@ export default function CommentCard(prop){
         const url2 = "http://localhost:5001/comment/" + prop.data._id+ "/"+ prop.data.content;
         const request = await axios.get(url2);
         const data = request.data;
-        // var newData= {...current}
-        // newData.likes = prop.likes +1 
-        // console.log(data)
-        // setCurrent(newData)
-      
+
         setLikes(data);
 
         
@@ -47,7 +46,6 @@ export default function CommentCard(prop){
         const request = await axios.get(url2);
         const data = request.data;
         console.log(data)
-        // setCurrent(data)
         setLikes(data);
 
   }

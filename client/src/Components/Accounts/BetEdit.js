@@ -25,6 +25,7 @@ export default function BetEdit(props){
         func();
     }, [props.data.nmid]);
 
+    //Error handling of the bet change inputs
     const handleSubmit = async(e) =>{
         e.preventDefault();
         const val = parseFloat(input);
@@ -53,7 +54,7 @@ export default function BetEdit(props){
         props.setUser(data[0]);
 
         localStorage.setItem("user", JSON.stringify(data[0]));
-        
+
         setError(<p style = {{"color":"green"}}>Bet Adjusted!</p>)
         setInput("");
 

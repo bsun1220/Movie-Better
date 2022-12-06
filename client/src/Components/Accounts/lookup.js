@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import axios from "axios";
 import Card from "./card";
 
+//This is our bettor lookup
+//You can look for any user by their username 
+//it will display a basic portfolio on them
 export default function LookUp(){
 
     const [error, setError] = useState("");
