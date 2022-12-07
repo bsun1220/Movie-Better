@@ -49,7 +49,7 @@ export default function HomePage(){
             </div>
             <hr/>
             <p> MovieBetter is a web application that allows users to bet on the ratings of movies to be released on IMDB. The metrics 
-                exactly becomes what the IMDB rating of that movie will be 7 days after it is released. Moreover, MovieBetter provides
+                exactly become what the IMDB rating of that movie will be 7 days after it is released. MovieBetter provides
                 its users with various tools to study the distribution of ratings on existing IMDB movies. For example, on the 
                 encyclopedia page, users can make various queries to MovieBetter's database of previously released movies to gain
                 insight on the past. Moreover, DataVis provides users the ability to study future movies that users can bet on by 
@@ -63,8 +63,8 @@ export default function HomePage(){
                 and the $50 back while person B will receive $100 back and 67 percent of winnings. Winnings will come from all of the losers of the bet. 
             </p>
             <p>
-                To play this game, users will have to create an account and then got on the betting platform to manually put in their bets. 
-                As a reminder, players are allow to place bets on several ratings within the same movie. Creating an account is easy and 
+                To play this game, users will have to create an account and then go on the betting platform to manually put in their bets. 
+                As a reminder, players are allowed to place bets on several ratings within the same movie. Creating an account is easy and 
                 requires only that the users either goes to the MyAccounts page or Betting Platform page to set up a username and password
                 with certain constraints. Before the user bets, they should carefully study by making queries on movie analysis. 
             </p>
@@ -75,7 +75,7 @@ export default function HomePage(){
                 <h1 style = {{"marginLeft": "20px"}}>Database</h1>
             </div>
             <hr/>
-            <p> MovieBetter runs on on MongoDB and stores various tables necessary for operations. First, MovieBetter has information for 
+            <p> MovieBetter runs on MongoDB and stores various tables necessary for operations. First, MovieBetter has information for 
                 20,000 movies stored across 5 different tables which include information about rating, number of IMDB votes, genre, director, 
                 actor, and release year. MovieBetter also stores 60,000 important actors and directors and their corresponding information 
                 including their birth year, death year, and most famous movies. Finally, MovieBetter stores important information for the 

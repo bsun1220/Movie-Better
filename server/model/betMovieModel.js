@@ -29,8 +29,6 @@ const BetMovieSchema = new Schema({
         type:String,
         required:true
     }
-    
-
 });
 
 const BetMovie  = mongoose.model("BetMovie", BetMovieSchema);

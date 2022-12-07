@@ -43,7 +43,7 @@ export default function DataVisPage(){
                 From there, the user will receive basic information from this movie, including genre, title, director, and actors. From there,
                 the user can continue to conduct future analysis. For example, the user can examine the past movies from the director in the form 
                 of time series analysis. Other features include search by actor and genre analysis. The user can add more restrictions
-                within their search, allowing for more pinpoint precision, with data originating from IDMB. 
+                within their search, allowing for more pinpoint precision, with data originating from IMDB. 
             </p>
             <p>
                 After conducting this analysis, a user can examine other trends such as the total number of bets being placed on the 2023 movie
