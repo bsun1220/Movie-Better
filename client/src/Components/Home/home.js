@@ -48,7 +48,7 @@ export default function HomePage(){
                 <h1 style = {{"marginLeft": "20px"}}>Background</h1>
             </div>
             <hr/>
-            <p> MovieBetter is a web application that allows users to bet on the ratings of movies to be released on IDMB. The metrics 
+            <p> MovieBetter is a web application that allows users to bet on the ratings of movies to be released on IMDB. The metrics 
                 exactly becomes what the IMDB rating of that movie will be 7 days after it is released. Moreover, MovieBetter provides
                 its users with various tools to study the distribution of ratings on existing IMDB movies. For example, on the 
                 encyclopedia page, users can make various queries to MovieBetter's database of previously released movies to gain
