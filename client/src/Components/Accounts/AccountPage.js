@@ -34,8 +34,8 @@ export default function AccountPage(){
             const url2 = "http://localhost:5001/gettemp/" + user.uid;
             const request2 = await axios.get(url2);
             const temp = request2.data;
-            console.log("hereiam")
-            console.log(temp)
+            // console.log("hereiam")
+            // console.log(temp)
             //The user and bet dashboard
             setEdit(<EditAccount id = {Math.random()} user = {user} setUser = {setUser} old_user = {user.username} pw = {temp} />)
             setVisual(<VisualPage user = {user} setUser = {setUser} bets = {data} />)

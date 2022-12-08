@@ -34,8 +34,8 @@ Router.put("/accountedit", async(req, res) => {
     const last = req.body.last; 
 
     const hashed = bcrypt.hashSync(password, saltRounds)
-    console.log(password)
-    console.log(hashed)
+    // console.log(password)
+    // console.log(hashed)
 
 
     User.find({username:username})
@@ -98,8 +98,8 @@ Router.get("/login/:name/:password", async(req, res) => {
     const arrID =  Array.from(hash).forEach(function(myDoc){myHashes.push(myDoc.password)})
     const myHash= myHashes[0]
 
-    console.log(myHash)
-    console.log(password)
+    // console.log(myHash)
+    // console.log(password)
 
     let answer = bcrypt.compareSync(password, myHash)
         if (answer) {
@@ -152,7 +152,7 @@ Router.put("/loginbet", async (req, res) => {
 //Gets the user password
 Router.get("/gettemp/:uid", async(req, res) => {
     const uid = req.params.uid;
-    console.log(uid)
+    // console.log(uid)
     let answer = temps[uid]
     console.log(temps)
     res.send(answer);
